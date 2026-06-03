@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card - Perencanaan</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            width: 320px;
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .placeholder {
+            background: #e0e0e0;
+            border-radius: 8px;
+            margin: 8px 0;
+        }
+
+        .avatar-placeholder {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+        }
+
+        .text-placeholder {
+            height: 20px;
+            width: 60%;
+            margin: 8px auto;
+        }
+
+        .text-placeholder.short {
+            width: 40%;
+        }
+
+        .text-placeholder.long {
+            width: 80%;
+        }
+
+        .social-placeholder {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin: 16px 0;
+        }
+
+        .social-placeholder div {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .btn-placeholder {
+            height: 40px;
+            width: 45%;
+            border-radius: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="placeholder avatar-placeholder"></div>
+        <div class="placeholder text-placeholder"></div>
+        <div class="placeholder text-placeholder short"></div>
+        <div class="placeholder text-placeholder long"></div>
+        <div class="social-placeholder">
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+            <div class="placeholder"></div>
+        </div>
+        <div style="display:flex; gap:10px; justify-content:center;">
+            <div class="placeholder btn-placeholder"></div>
+            <div class="placeholder btn-placeholder"></div>
+        </div>
+    </div>
+</body>
+
+</html>

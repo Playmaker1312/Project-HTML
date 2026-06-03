@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .iframe-demo {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .embed-section {
+            margin: 30px 0;
+        }
+
+        .iframe-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .iframe-wrapper iframe {
+            width: 100%;
+            height: 315px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="iframe-demo">
+        <h1>Embed Konten dengan Iframe</h1>
+
+        <section class="embed-section">
+            <h2>Embed Video YouTube</h2>
+            <div class="iframe-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/jNQXAC9IVRw"
+                    title="YouTube video player" allowfullscreen loading="lazy"></iframe>
+            </div>
+        </section>
+
+        <section class="embed-section">
+            <h2>Embed Google Maps</h2>
+            <div class="iframe-wrapper">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.865633!3d-6.17511"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade" title="Google Maps"></iframe>
+            </div>
+        </section>
+
+        <section class="embed-section">
+            <h2>Iframe dengan Sandbox (Aman)</h2>
+            <iframe src="about:blank" width="100%" height="150" sandbox="allow-scripts"
+                srcdoc="<p>Ini konten dari srcdoc - <strong>HTML langsung</strong> tanpa file terpisah.</p><button onclick='alert(\"
+                Hello from iframe!\")'>Klik Saya</button>" title="Sandbox iframe demo"></iframe>
+        </section>
+    </div>
+</body>
+
+</html>

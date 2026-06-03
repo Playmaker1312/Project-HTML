@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Selection Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .dom-demo {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        #outputSelection {
+            margin-top: 20px;
+            padding: 16px;
+            background: #f0f8ff;
+            border-radius: 8px;
+        }
+
+        #resultSelection {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            min-height: 30px;
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        .action-btns button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .action-btns button:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dom-demo">
+        <h1 id="mainTitle">DOM Selection</h1>
+
+        <div class="container">
+            <p class="text-item">Paragraf 1 - class text-item</p>
+            <p class="text-item">Paragraf 2 - class text-item</p>
+            <p class="text-item highlight">Paragraf 3 - class text-item dan highlight</p>
+        </div>
+
+        <div class="container" data-section="produk">
+            <button class="btn-select" data-id="1">Tombol 1</button>
+            <button class="btn-select" data-id="2">Tombol 2</button>
+            <button class="btn-select" data-id="3">Tombol 3</button>
+        </div>
+
+        <div id="outputSelection">
+            <p>Hasil seleksi muncul di console (F12) dan di bawah:</p>
+            <pre id="resultSelection">Klik tombol untuk seleksi</pre>
+        </div>
+
+        <div class="action-btns">
+            <button id="btnSelectId">Select by ID</button>
+            <button id="btnSelectClass">Select by Class</button>
+            <button id="btnSelectAll">Select All P</button>
+            <button id="btnSelectAttr">Select by Attribute</button>
+        </div>
+    </div>
+    <script>
+        var result = document.getElementById('resultSelection');
+
+        document.getElementById('btnSelectId').addEventListener('click', function () {
+            var el = document.querySelector('#mainTitle');
+            result.textContent = 'querySelector #mainTitle: ' + el.textContent + ' (tag: ' + el.tagName + ')';
+        });
+
+        document.getElementById('btnSelectClass').addEventListener('click', function () {
+            var el = document.querySelector('.text-item');
+            result.textContent = 'querySelector .text-item (pertama): ' + el.textContent;
+        });
+
+        document.getElementById('btnSelectAll').addEventListener('click', function () {
+            var allP = document.querySelectorAll('p.text-item');
+            var msg = 'querySelectorAll p.text-item: ' + allP.length + ' elemen\n';
+            allP.forEach(function (p, index) {
+                msg += '  ' + (index + 1) + '. ' + p.textContent + '\n';
+            });
+            result.textContent = msg;
+        });
+
+        document.getElementById('btnSelectAttr').addEventListener('click', function () {
+            var btns = document.querySelectorAll('[data-id]');
+            var msg = 'querySelectorAll [data-id]: ' + btns.length + ' tombol\n';
+            btns.forEach(function (btn) {
+                msg += '  data-id=' + btn.getAttribute('data-id') + ': ' + btn.textContent + '\n';
+            });
+            result.textContent = msg;
+        });
+    </script>
+</body>
+
+</html>

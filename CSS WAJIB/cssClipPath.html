@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clip-path Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .clip-demo {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        .clip-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .clip-card {
+            background: #f8f9fa;
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .clip-card h3 {
+            margin: 0 0 12px 0;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .clip-box {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto;
+        }
+
+        .clip-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .clip-circle img {
+            clip-path: circle(50%);
+        }
+
+        .clip-ellipse img {
+            clip-path: ellipse(40% 30%);
+        }
+
+        .clip-triangle img {
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+
+        .clip-diamond img {
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        }
+
+        .clip-hexagon img {
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+        }
+
+        .clip-star img {
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+
+        .clip-inset img {
+            clip-path: inset(10% 10% 10% 10% round 20px);
+        }
+
+        .clip-anim img {
+            clip-path: circle(40%);
+            transition: clip-path 0.4s ease;
+        }
+
+        .clip-anim:hover img {
+            clip-path: circle(70%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clip-demo">
+        <h1>CSS Clip-path</h1>
+
+        <div class="clip-grid">
+            <div class="clip-card">
+                <h3>circle(50%)</h3>
+                <div class="clip-box clip-circle">
+                    <img src="https://via.placeholder.com/200x200/3498db/ffffff?text=Circle" alt="circle">
+                </div>
+            </div>
+
+            <div class="clip-card">
+                <h3>ellipse(40% 30%)</h3>
+                <div class="clip-box clip-ellipse">
+                    <img src="https://via.placeholder.com/200x200/e74c3c/ffffff?text=Ellipse" alt="ellipse">
+                </div>
+            </div>
+
+            <div class="clip-card">
+                <h3>polygon - segitiga</h3>
+                <div class="clip-box clip-triangle">
+                    <img src="https://via.placeholder.com/200x200/27ae60/ffffff?text=Triangle" alt="triangle">
+                </div>
+            </div>
+
+            <div class="clip-card">
+                <h3>polygon - diamond</h3>
+                <div class="clip-box clip-diamond">
+                    <img src="https://via.placeholder.com/200x200/9b59b6/ffffff?text=Diamond" alt="diamond">
+                </div>
+            </div>
+
+            <div class="clip-card">
+                <h3>polygon - hexagon</h3>
+                <div class="clip-box clip-hexagon">
+                    <img src="https://via.placeholder.com/200x200/e67e22/ffffff?text=Hexagon" alt="hexagon">
+                </div>
+            </div>
+
+            <div class="clip-card">
+                <h3>polygon - star</h3>
+                <div class="clip-box clip-star">
+                    <img src="https://via.placeholder.com/200x200/1abc9c/ffffff?text=Star" alt="star">
+                </div>
+            </div>
+
+            <div class="clip-card">
+                <h3>inset round</h3>
+                <div class="clip-box clip-inset">
+                    <img src="https://via.placeholder.com/200x200/2c3e50/ffffff?text=Inset" alt="inset">
+                </div>
+            </div>
+
+            <div class="clip-card">
+                <h3>Animasi Hover</h3>
+                <div class="clip-box clip-anim">
+                    <img src="https://via.placeholder.com/200x200/d35400/ffffff?text=Hover" alt="hover anim">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

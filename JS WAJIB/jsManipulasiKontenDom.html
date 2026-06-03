@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulasi Konten</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .content-demo {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .display-box {
+            background: #f0f8ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            min-height: 50px;
+            border: 2px dashed #3498db;
+        }
+
+        .input-area {
+            margin: 20px 0;
+        }
+
+        .input-area label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: monospace;
+            box-sizing: border-box;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn-group button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .btn-group button:hover {
+            background: #2980b9;
+        }
+
+        .info-panel {
+            margin-top: 20px;
+            padding: 16px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 13px;
+            min-height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content-demo">
+        <h1>innerHTML vs textContent</h1>
+
+        <div id="displayArea" class="display-box">
+            Konten <strong>awal</strong> di sini.
+        </div>
+
+        <div class="input-area">
+            <label for="userInput">Masukkan teks atau HTML:</label>
+            <textarea id="userInput" rows="3"
+                placeholder="Coba: <strong>teks tebal</strong>">Hello <strong>World</strong>!</textarea>
+        </div>
+
+        <div class="btn-group">
+            <button id="btnTextContent">Set textContent</button>
+            <button id="btnInnerHTML">Set innerHTML</button>
+            <button id="btnGetContent">Ambil Konten</button>
+            <button id="btnAppend">Append HTML</button>
+            <button id="btnClear">Clear</button>
+        </div>
+
+        <div id="infoPanel" class="info-panel">
+            Hasil akan muncul di sini...
+        </div>
+    </div>
+    <script>
+        var display = document.getElementById('displayArea');
+        var input = document.getElementById('userInput');
+        var info = document.getElementById('infoPanel');
+
+        document.getElementById('btnTextContent').addEventListener('click', function () {
+            var val = input.value;
+            display.textContent = val;
+            info.textContent = 'textContent: HTML tidak diproses -> "' + display.textContent + '"';
+        });
+
+        document.getElementById('btnInnerHTML').addEventListener('click', function () {
+            var val = input.value;
+            display.innerHTML = val;
+            info.innerHTML = '<span style="color:#27ae60;">innerHTML:</span> HTML diproses -> ' + display.innerHTML;
+        });
+
+        document.getElementById('btnGetContent').addEventListener('click', function () {
+            info.textContent = 'textContent: "' + display.textContent + '" | innerHTML: "' + display.innerHTML + '"';
+        });
+
+        document.getElementById('btnAppend').addEventListener('click', function () {
+            display.innerHTML += ' <span style="color:#e74c3c;">[ditambahkan]</span>';
+            info.textContent = 'HTML diappend: ' + display.innerHTML;
+        });
+
+        document.getElementById('btnClear').addEventListener('click', function () {
+            display.textContent = '';
+            info.textContent = 'Display dikosongkan';
+        });
+    </script>
+</body>
+
+</html>

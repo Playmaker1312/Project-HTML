@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form HTML</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .form-container div {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: auto;
+            margin-right: 6px;
+        }
+
+        label input[type="radio"],
+        label input[type="checkbox"] {
+            display: inline;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            background: #3498db;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button[type="reset"] {
+            background: #95a5a6;
+        }
+
+        #output {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f8ff;
+            border-radius: 6px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Formulir Pendaftaran</h2>
+        <form id="registerForm">
+            <div>
+                <label for="nama">Nama Lengkap:</label>
+                <input type="text" id="nama" name="nama" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required minlength="6">
+            </div>
+            <div>
+                <label for="pesan">Pesan:</label>
+                <textarea id="pesan" name="pesan" rows="4"></textarea>
+            </div>
+            <div>
+                <label for="kota">Kota:</label>
+                <select id="kota" name="kota">
+                    <option value="">Pilih Kota</option>
+                    <option value="jakarta">Jakarta</option>
+                    <option value="bandung">Bandung</option>
+                    <option value="surabaya">Surabaya</option>
+                </select>
+            </div>
+            <div>
+                <label>Jenis Kelamin:</label>
+                <label><input type="radio" name="kelamin" value="pria"> Pria</label>
+                <label><input type="radio" name="kelamin" value="wanita"> Wanita</label>
+            </div>
+            <div>
+                <label><input type="checkbox" name="syarat" required> Saya setuju dengan syarat & ketentuan</label>
+            </div>
+            <button type="submit">Daftar</button>
+            <button type="reset">Reset</button>
+        </form>
+        <div id="output"></div>
+    </div>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var data = {
+                nama: document.getElementById('nama').value,
+                email: document.getElementById('email').value,
+                pesan: document.getElementById('pesan').value,
+                kota: document.getElementById('kota').value,
+                kelamin: document.querySelector('input[name="kelamin"]:checked') ? document.querySelector('input[name="kelamin"]:checked').value : '-'
+            };
+            var output = document.getElementById('output');
+            output.style.display = 'block';
+            output.innerHTML = '<strong>Data Terkirim:</strong><br>' + JSON.stringify(data, null, 2);
+        });
+    </script>
+</body>
+
+</html>

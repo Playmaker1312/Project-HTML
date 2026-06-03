@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer Functions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .timer-demo {
+            max-width: 450px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .timer-section {
+            margin: 20px 0;
+            padding: 16px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .timer-section h2 {
+            margin: 0 0 12px 0;
+            font-size: 1rem;
+            color: #2c3e50;
+        }
+
+        button {
+            padding: 8px 14px;
+            border: none;
+            border-radius: 4px;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+            margin: 2px;
+            font-size: 12px;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        .timer-status {
+            margin-top: 12px;
+            padding: 10px;
+            background: #fff3cd;
+            border-radius: 4px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .stopwatch {
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        #stopwatchDisplay {
+            font-size: 2rem;
+            font-family: monospace;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .countdown {
+            font-size: 3rem;
+            text-align: center;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-top: 10px;
+        }
+
+        .timer-log {
+            margin-top: 16px;
+            padding: 12px;
+            background: #f0f8ff;
+            border-radius: 8px;
+            font-size: 13px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="timer-demo">
+        <h1>setTimeout & setInterval</h1>
+
+        <div class="timer-section">
+            <h2>setTimeout (Alarm 3 detik)</h2>
+            <button id="btnSetTimeout">Set Alarm (3s)</button>
+            <button id="btnCancelTimeout">Batal Alarm</button>
+            <div id="timeoutStatus" class="timer-status">Menunggu...</div>
+        </div>
+
+        <div class="timer-section">
+            <h2>setInterval (Stopwatch)</h2>
+            <button id="btnStartInterval">Mulai</button>
+            <button id="btnStopInterval">Berhenti</button>
+            <button id="btnResetInterval">Reset</button>
+            <div class="stopwatch">
+                <span id="stopwatchDisplay">00:00:00</span>
+            </div>
+        </div>
+
+        <div class="timer-section">
+            <h2>Countdown (setTimeout rekursif)</h2>
+            <button id="btnStartCountdown">Mulai Countdown 10</button>
+            <div id="countdownDisplay" class="countdown">-</div>
+        </div>
+
+        <div id="timerLog" class="timer-log">...</div>
+    </div>
+    <script>
+        var timeoutStatus = document.getElementById('timeoutStatus');
+        var swDisplay = document.getElementById('stopwatchDisplay');
+        var countdownDisplay = document.getElementById('countdownDisplay');
+        var log = document.getElementById('timerLog');
+
+        var timeoutId = null;
+        var intervalId = null;
+        var swSeconds = 0;
+
+        document.getElementById('btnSetTimeout').addEventListener('click', function () {
+            timeoutStatus.textContent = 'Alarm diset untuk 3 detik...';
+            timeoutId = setTimeout(function () {
+                timeoutStatus.textContent = 'BEEP! Waktu habis!';
+                log.textContent = 'setTimeout: Alarm berbunyi setelah 3 detik';
+                timeoutId = null;
+            }, 3000);
+            log.textContent = 'setTimeout: Alarm dijadwalkan (ID: ' + timeoutId + ')';
+        });
+
+        document.getElementById('btnCancelTimeout').addEventListener('click', function () {
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+                timeoutStatus.textContent = 'Alarm dibatalkan';
+                log.textContent = 'clearTimeout: Alarm dibatalkan';
+                timeoutId = null;
+            } else {
+                log.textContent = 'Tidak ada alarm yang aktif';
+            }
+        });
+
+        document.getElementById('btnStartInterval').addEventListener('click', function () {
+            if (intervalId) return;
+            intervalId = setInterval(function () {
+                swSeconds++;
+                var h = String(Math.floor(swSeconds / 3600)).padStart(2, '0');
+                var m = String(Math.floor((swSeconds % 3600) / 60)).padStart(2, '0');
+                var s = String(swSeconds % 60).padStart(2, '0');
+                swDisplay.textContent = h + ':' + m + ':' + s;
+            }, 1000);
+            log.textContent = 'setInterval: Stopwatch dimulai';
+        });
+
+        document.getElementById('btnStopInterval').addEventListener('click', function () {
+            if (intervalId) {
+                clearInterval(intervalId);
+                intervalId = null;
+                log.textContent = 'clearInterval: Stopwatch dihentikan pada ' + swDisplay.textContent;
+            }
+        });
+
+        document.getElementById('btnResetInterval').addEventListener('click', function () {
+            if (intervalId) {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+            swSeconds = 0;
+            swDisplay.textContent = '00:00:00';
+            log.textContent = 'Stopwatch di-reset';
+        });
+
+        document.getElementById('btnStartCountdown').addEventListener('click', function () {
+            var count = 10;
+            countdownDisplay.textContent = count;
+            log.textContent = 'Countdown dimulai dari ' + count;
+
+            function tick() {
+                count--;
+                countdownDisplay.textContent = count;
+                if (count > 0) {
+                    setTimeout(tick, 1000);
+                } else {
+                    countdownDisplay.textContent = 'GO!';
+                    log.textContent = 'Countdown selesai!';
+                }
+            }
+
+            setTimeout(tick, 1000);
+        });
+    </script>
+</body>
+
+</html>

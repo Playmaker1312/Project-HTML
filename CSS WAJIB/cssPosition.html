@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Position Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .position-demo {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-top: 30px;
+        }
+
+        .pos-container {
+            background: #f0f0f0;
+            padding: 16px;
+            border-radius: 8px;
+            display: flex;
+            gap: 12px;
+            min-height: 80px;
+            position: relative;
+        }
+
+        .short {
+            min-height: 60px;
+        }
+
+        .pos-box {
+            background: #3498db;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+
+        .relative {
+            position: relative;
+            top: 20px;
+            left: 10px;
+            background: #e74c3c;
+        }
+
+        .relative-parent {
+            position: relative;
+            min-height: 120px;
+        }
+
+        .absolute-child {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: #27ae60;
+        }
+
+        .fixed-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #2c3e50;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .sticky-container {
+            background: #f8f9fa;
+            border-radius: 8px;
+            overflow: auto;
+            max-height: 300px;
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            background: #9b59b6;
+            color: white;
+            padding: 12px 16px;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        .sticky-content {
+            padding: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="position-demo">
+        <h1>CSS Position</h1>
+
+        <h2>Position: relative</h2>
+        <div class="pos-container short">
+            <div class="pos-box static">static (default)</div>
+            <div class="pos-box relative">relative (geser 20px)</div>
+            <div class="pos-box static">static</div>
+        </div>
+
+        <h2>Position: absolute</h2>
+        <div class="pos-container relative-parent">
+            <div class="pos-box">Parent relative</div>
+            <div class="pos-box absolute-child">absolute: bottom-right</div>
+        </div>
+
+        <h2>Position: fixed (tombol back-to-top)</h2>
+        <div class="demo-content">
+            <p>Scroll halaman untuk melihat tombol fixed di pojok kanan bawah.</p>
+        </div>
+        <div class="fixed-btn" id="scrollTopBtn">Top</div>
+
+        <h2>Position: sticky</h2>
+        <div class="sticky-container">
+            <div class="sticky-header">Sticky Header</div>
+            <div class="sticky-content">
+                <p>Scroll ke bawah - header ini akan menempel di atas saat melewatinya.</p>
+                <p style="margin-top:200px;">Konten panjang untuk demo scroll.</p>
+                <p style="margin-top:200px;">Terus scroll...</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('scrollTopBtn').addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+
+</html>

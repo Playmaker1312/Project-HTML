@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .fetch-demo {
+            max-width: 500px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .fetch-controls {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .fetch-controls button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+        }
+
+        .fetch-controls button:hover {
+            background: #2980b9;
+        }
+
+        .loading-indicator {
+            display: none;
+            padding: 12px;
+            background: #fff3cd;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .results {
+            background: #f8f9fa;
+            padding: 16px;
+            border-radius: 8px;
+        }
+
+        #fetchResult {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            min-height: 80px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        .fetch-info {
+            margin-top: 16px;
+            font-size: 13px;
+            color: #555;
+        }
+
+        .status-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #95a5a6;
+        }
+
+        .status-dot.success {
+            background: #27ae60;
+        }
+
+        .status-dot.error {
+            background: #e74c3c;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fetch-demo">
+        <h1>Fetch API</h1>
+
+        <div class="fetch-controls">
+            <button id="btnGet">GET Data</button>
+            <button id="btnGetUsers">GET Users</button>
+            <button id="btnPost">POST Data</button>
+            <button id="btnError">Trigger Error</button>
+        </div>
+
+        <div class="loading-indicator" id="loading">Memuat data...</div>
+
+        <div class="results">
+            <h3>Response:</h3>
+            <pre id="fetchResult">Klik tombol untuk mengambil data</pre>
+        </div>
+
+        <div class="fetch-info">
+            <p><strong>Endpoint:</strong> JSONPlaceholder API (free fake API)</p>
+            <p><span class="status-dot" id="statusDot"></span> Status: <span id="fetchStatus">Menunggu</span></p>
+        </div>
+    </div>
+    <script>
+        var result = document.getElementById('fetchResult');
+        var loading = document.getElementById('loading');
+        var statusEl = document.getElementById('fetchStatus');
+        var statusDot = document.getElementById('statusDot');
+        var API = 'https://jsonplaceholder.typicode.com';
+
+        function setStatus(text, isError) {
+            statusEl.textContent = text;
+            statusDot.className = 'status-dot' + (isError ? ' error' : ' success');
+        }
+
+        function showLoading(show) {
+            loading.style.display = show ? 'block' : 'none';
+        }
+
+        function handleError(err) {
+            result.textContent = 'Error: ' + err.message;
+            setStatus('Error: ' + err.message, true);
+            showLoading(false);
+        }
+
+        document.getElementById('btnGet').addEventListener('click', function () {
+            showLoading(true);
+            setStatus('Mengambil data...', false);
+            fetch(API + '/todos/1')
+                .then(function (response) {
+                    if (!response.ok) {
+                        throw new Error('HTTP ' + response.status);
+                    }
+                    return response.json();
+                })
+                .then(function (data) {
+                    result.textContent = JSON.stringify(data, null, 2);
+                    setStatus('Sukses: Data diterima', false);
+                    showLoading(false);
+                })
+                .catch(handleError);
+        });
+
+        document.getElementById('btnGetUsers').addEventListener('click', function () {
+            showLoading(true);
+            setStatus('Mengambil data users...', false);
+            fetch(API + '/users')
+                .then(function (response) { return response.json(); })
+                .then(function (data) {
+                    var output = 'Menampilkan ' + data.length + ' users:\n';
+                    for (var i = 0; i < data.length; i++) {
+                        output += (i + 1) + '. ' + data[i].name + ' (' + data[i].email + ')\n';
+                    }
+                    result.textContent = output;
+                    setStatus('Sukses: ' + data.length + ' users dimuat', false);
+                    showLoading(false);
+                })
+                .catch(handleError);
+        });
+
+        document.getElementById('btnPost').addEventListener('click', function () {
+            showLoading(true);
+            fetch(API + '/posts', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    title: 'Data Baru',
+                    body: 'Ini konten post baru dari Fetch API',
+                    userId: 1
+                })
+            })
+                .then(function (response) { return response.json(); })
+                .then(function (data) {
+                    result.textContent = JSON.stringify(data, null, 2);
+                    setStatus('Sukses: Data terkirim (ID: ' + data.id + ')', false);
+                    showLoading(false);
+                })
+                .catch(handleError);
+        });
+
+        document.getElementById('btnError').addEventListener('click', function () {
+            showLoading(true);
+            fetch('https://jsonplaceholder.typicode.com/invalid-endpoint')
+                .then(function (response) {
+                    if (!response.ok) {
+                        throw new Error('HTTP Error: ' + response.status);
+                    }
+                    return response.json();
+                })
+                .then(function (data) {
+                    result.textContent = JSON.stringify(data, null, 2);
+                    showLoading(false);
+                })
+                .catch(handleError);
+        });
+    </script>
+</body>
+
+</html>

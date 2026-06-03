@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Transition Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .transition-demo {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-top: 30px;
+        }
+
+        .card-transition {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .transition-box {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #3498db;
+            color: white;
+            border-radius: 8px;
+            font-size: 13px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .box-color {
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .box-color:hover {
+            background: #e74c3c;
+            color: #ffeaa7;
+        }
+
+        .box-scale {
+            transition: transform 0.3s ease;
+        }
+
+        .box-scale:hover {
+            transform: scale(1.15);
+        }
+
+        .box-rotate {
+            transition: transform 0.5s ease;
+        }
+
+        .box-rotate:hover {
+            transform: rotate(360deg);
+        }
+
+        .box-slide {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .box-slide:hover {
+            transform: translateX(20px);
+        }
+
+        .multi-transition {
+            margin: 20px 0;
+        }
+
+        .multi-box {
+            width: 200px;
+            padding: 20px;
+            background: #9b59b6;
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .multi-box:hover {
+            background: #8e44ad;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(155, 89, 182, 0.4);
+        }
+
+        .timing-demo {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .timing-box {
+            width: 200px;
+            padding: 12px;
+            background: #27ae60;
+            color: white;
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 1s;
+        }
+
+        .timing-demo:hover .ease {
+            transform: translateX(200px);
+            transition-timing-function: ease;
+        }
+
+        .timing-demo:hover .linear {
+            transform: translateX(200px);
+            transition-timing-function: linear;
+        }
+
+        .timing-demo:hover .ease-in {
+            transform: translateX(200px);
+            transition-timing-function: ease-in;
+        }
+
+        .timing-demo:hover .ease-out {
+            transform: translateX(200px);
+            transition-timing-function: ease-out;
+        }
+
+        .timing-demo:hover .ease-in-out {
+            transform: translateX(200px);
+            transition-timing-function: ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="transition-demo">
+        <h1>CSS Transition</h1>
+
+        <h2>Hover Transition</h2>
+        <div class="card-transition">
+            <div class="transition-box box-color">Change Color</div>
+            <div class="transition-box box-scale">Scale Up</div>
+            <div class="transition-box box-rotate">Rotate</div>
+            <div class="transition-box box-slide">Slide Right</div>
+        </div>
+
+        <h2>Multi-property Transition</h2>
+        <div class="multi-transition">
+            <div class="multi-box">Hover me!</div>
+        </div>
+
+        <h2>Transition Timing Functions</h2>
+        <div class="timing-demo">
+            <div class="timing-box ease">ease</div>
+            <div class="timing-box linear">linear</div>
+            <div class="timing-box ease-in">ease-in</div>
+            <div class="timing-box ease-out">ease-out</div>
+            <div class="timing-box ease-in-out">ease-in-out</div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Storage Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .storage-demo {
+            max-width: 500px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .storage-form {
+            display: flex;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .storage-form div {
+            flex: 1;
+        }
+
+        .storage-form label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .storage-form input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .storage-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .storage-buttons button {
+            padding: 8px 14px;
+            border: none;
+            border-radius: 4px;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .storage-buttons button:hover {
+            background: #2980b9;
+        }
+
+        .storage-save-complex {
+            margin: 20px 0;
+            padding: 16px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .storage-save-complex h3 {
+            margin: 0 0 10px 0;
+            font-size: 14px;
+        }
+
+        .storage-save-complex button {
+            padding: 8px 14px;
+            border: none;
+            border-radius: 4px;
+            background: #9b59b6;
+            color: white;
+            cursor: pointer;
+        }
+
+        .storage-display pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            min-height: 30px;
+            white-space: pre-wrap;
+        }
+
+        .storage-log {
+            margin-top: 16px;
+            padding: 12px;
+            background: #f0f8ff;
+            border-radius: 8px;
+            font-size: 13px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="storage-demo">
+        <h1>localStorage & sessionStorage</h1>
+
+        <div class="storage-form">
+            <div>
+                <label for="keyInput">Key:</label>
+                <input type="text" id="keyInput" placeholder="nama_key" value="user">
+            </div>
+            <div>
+                <label for="valueInput">Value:</label>
+                <input type="text" id="valueInput" placeholder="nilai" value="John Doe">
+            </div>
+        </div>
+
+        <div class="storage-buttons">
+            <button id="btnSaveLS">Simpan ke localStorage</button>
+            <button id="btnSaveSS">Simpan ke sessionStorage</button>
+            <button id="btnRead">Baca Data</button>
+            <button id="btnRemove">Hapus Satu Item</button>
+            <button id="btnClearLS">Clear localStorage</button>
+            <button id="btnClearSS">Clear sessionStorage</button>
+        </div>
+
+        <div class="storage-save-complex">
+            <h3>Simpan Data Kompleks (Object)</h3>
+            <button id="btnSaveObject">Simpan Object User</button>
+            <button id="btnLoadObject">Load Object User</button>
+        </div>
+
+        <div class="storage-display">
+            <h3>localStorage Contents:</h3>
+            <pre id="lsDisplay">(kosong)</pre>
+            <h3>sessionStorage Contents:</h3>
+            <pre id="ssDisplay">(kosong)</pre>
+        </div>
+
+        <div id="storageLog" class="storage-log">...</div>
+    </div>
+    <script>
+        var lsDisplay = document.getElementById('lsDisplay');
+        var ssDisplay = document.getElementById('ssDisplay');
+        var log = document.getElementById('storageLog');
+
+        function refreshDisplay() {
+            var lsData = {};
+            for (var i = 0; i < localStorage.length; i++) {
+                var key = localStorage.key(i);
+                lsData[key] = localStorage.getItem(key);
+            }
+            lsDisplay.textContent = Object.keys(lsData).length > 0 ? JSON.stringify(lsData, null, 2) : '(kosong)';
+
+            var ssData = {};
+            for (var i = 0; i < sessionStorage.length; i++) {
+                var key = sessionStorage.key(i);
+                ssData[key] = sessionStorage.getItem(key);
+            }
+            ssDisplay.textContent = Object.keys(ssData).length > 0 ? JSON.stringify(ssData, null, 2) : '(kosong)';
+        }
+
+        document.getElementById('btnSaveLS').addEventListener('click', function () {
+            var key = document.getElementById('keyInput').value;
+            var val = document.getElementById('valueInput').value;
+            localStorage.setItem(key, val);
+            log.textContent = 'localStorage: "' + key + '" = "' + val + '" disimpan';
+            refreshDisplay();
+        });
+
+        document.getElementById('btnSaveSS').addEventListener('click', function () {
+            var key = document.getElementById('keyInput').value;
+            var val = document.getElementById('valueInput').value;
+            sessionStorage.setItem(key, val);
+            log.textContent = 'sessionStorage: "' + key + '" = "' + val + '" disimpan';
+            refreshDisplay();
+        });
+
+        document.getElementById('btnRead').addEventListener('click', function () {
+            var key = document.getElementById('keyInput').value;
+            var lsVal = localStorage.getItem(key);
+            var ssVal = sessionStorage.getItem(key);
+            log.textContent = 'localStorage "' + key + '": ' + (lsVal || '(tidak ada)') + ' | sessionStorage "' + key + '": ' + (ssVal || '(tidak ada)');
+        });
+
+        document.getElementById('btnRemove').addEventListener('click', function () {
+            var key = document.getElementById('keyInput').value;
+            localStorage.removeItem(key);
+            sessionStorage.removeItem(key);
+            log.textContent = '"' + key + '" dihapus dari kedua storage';
+            refreshDisplay();
+        });
+
+        document.getElementById('btnClearLS').addEventListener('click', function () {
+            localStorage.clear();
+            log.textContent = 'localStorage dibersihkan';
+            refreshDisplay();
+        });
+
+        document.getElementById('btnClearSS').addEventListener('click', function () {
+            sessionStorage.clear();
+            log.textContent = 'sessionStorage dibersihkan';
+            refreshDisplay();
+        });
+
+        document.getElementById('btnSaveObject').addEventListener('click', function () {
+            var user = {
+                id: 1,
+                name: 'John Doe',
+                email: 'john@example.com',
+                preferences: { theme: 'dark', fontSize: 14 }
+            };
+            localStorage.setItem('user', JSON.stringify(user));
+            log.textContent = 'Object user disimpan ke localStorage';
+            refreshDisplay();
+        });
+
+        document.getElementById('btnLoadObject').addEventListener('click', function () {
+            var data = localStorage.getItem('user');
+            if (data) {
+                var user = JSON.parse(data);
+                log.textContent = 'User: ' + user.name + ', Email: ' + user.email + ', Theme: ' + user.preferences.theme;
+            } else {
+                log.textContent = 'Data user tidak ditemukan';
+            }
+        });
+
+        refreshDisplay();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Element Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .create-demo {
+            max-width: 500px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 20px 0;
+        }
+
+        .controls button {
+            padding: 8px 14px;
+            border: none;
+            border-radius: 4px;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .controls button:hover {
+            background: #2980b9;
+        }
+
+        .item-list {
+            background: #f8f9fa;
+            padding: 16px;
+            border-radius: 8px;
+            list-style-position: inside;
+            min-height: 100px;
+        }
+
+        .item-list li {
+            padding: 6px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .stats {
+            margin: 12px 0;
+            color: #555;
+        }
+
+        .create-log {
+            margin-top: 16px;
+            padding: 12px;
+            background: #f0f8ff;
+            border-radius: 8px;
+            font-size: 13px;
+            font-family: monospace;
+            min-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="create-demo">
+        <h1>Membuat & Menyisipkan Elemen</h1>
+
+        <div class="controls">
+            <button id="btnAddItem">Tambah Item (appendChild)</button>
+            <button id="btnPrependItem">Tambah di Awal (prepend)</button>
+            <button id="btnAddBefore">Tambah Sebelum Item 2</button>
+            <button id="btnAddMultiple">Tambah 5 Item Sekaligus</button>
+            <button id="btnRemoveLast">Hapus Item Terakhir</button>
+            <button id="btnClearList">Hapus Semua</button>
+        </div>
+
+        <ul id="itemList" class="item-list">
+            <li>Item 1 (default)</li>
+            <li id="refItem">Item 2 (referensi)</li>
+            <li>Item 3 (default)</li>
+        </ul>
+
+        <div class="stats">
+            <span>Total item: <strong id="itemCount">3</strong></span>
+        </div>
+
+        <div id="createLog" class="create-log">
+            Log akan muncul di sini...
+        </div>
+    </div>
+    <script>
+        var list = document.getElementById('itemList');
+        var log = document.getElementById('createLog');
+        var count = 3;
+
+        function updateCount() {
+            document.getElementById('itemCount').textContent = list.children.length;
+        }
+
+        function addLog(msg) {
+            log.textContent = msg;
+        }
+
+        document.getElementById('btnAddItem').addEventListener('click', function () {
+            count++;
+            var li = document.createElement('li');
+            li.textContent = 'Item ' + count + ' (baru)';
+            list.appendChild(li);
+            updateCount();
+            addLog('appendChild: Item ' + count + ' ditambahkan di akhir');
+        });
+
+        document.getElementById('btnPrependItem').addEventListener('click', function () {
+            count++;
+            var li = document.createElement('li');
+            li.textContent = 'Item ' + count + ' (awal)';
+            list.prepend(li);
+            updateCount();
+            addLog('prepend: Item ' + count + ' ditambahkan di awal');
+        });
+
+        document.getElementById('btnAddBefore').addEventListener('click', function () {
+            var refItem = document.getElementById('refItem');
+            if (refItem) {
+                count++;
+                var li = document.createElement('li');
+                li.textContent = 'Item ' + count + ' (sebelum ref)';
+                list.insertBefore(li, refItem);
+                updateCount();
+                addLog('insertBefore: Item ' + count + ' sebelum Item 2');
+            } else {
+                addLog('Item referensi tidak ditemukan!');
+            }
+        });
+
+        document.getElementById('btnAddMultiple').addEventListener('click', function () {
+            var fragment = document.createDocumentFragment();
+            for (var i = 1; i <= 5; i++) {
+                count++;
+                var li = document.createElement('li');
+                li.textContent = 'Item ' + count + ' (batch)';
+                fragment.appendChild(li);
+            }
+            list.appendChild(fragment);
+            updateCount();
+            addLog('5 item ditambahkan sekaligus (DocumentFragment)');
+        });
+
+        document.getElementById('btnRemoveLast').addEventListener('click', function () {
+            if (list.lastChild) {
+                var removed = list.lastChild.textContent;
+                list.removeChild(list.lastChild);
+                updateCount();
+                addLog('removeChild: "' + removed + '" dihapus');
+            }
+        });
+
+        document.getElementById('btnClearList').addEventListener('click', function () {
+            list.innerHTML = '';
+            count = 0;
+            updateCount();
+            addLog('Semua item dihapus');
+        });
+
+        updateCount();
+    </script>
+</body>
+
+</html>

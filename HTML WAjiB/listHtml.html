@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML List Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f6fa;
+        }
+
+        .list-demo {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+
+        ul,
+        ol {
+            line-height: 1.8;
+        }
+
+        dl dt {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 10px;
+        }
+
+        dl dd {
+            margin-left: 20px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="list-demo">
+        <h1>Jenis-Jenis List HTML</h1>
+
+        <h2>Unordered List (ul)</h2>
+        <ul>
+            <li>Apel</li>
+            <li>Pisang</li>
+            <li>Jeruk</li>
+            <li>Anggur</li>
+        </ul>
+
+        <h2>Ordered List (ol)</h2>
+        <ol>
+            <li>Buka VS Code</li>
+            <li>Buat file baru</li>
+            <li>Simpan sebagai index.html</li>
+            <li>Mulai menulis kode</li>
+        </ol>
+
+        <h2>Ordered List dengan Type A</h2>
+        <ol type="A">
+            <li>Pendahuluan</li>
+            <li>Isi</li>
+            <li>Kesimpulan</li>
+        </ol>
+
+        <h2>Nested List</h2>
+        <ul>
+            <li>Frontend
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                </ul>
+            </li>
+            <li>Backend
+                <ul>
+                    <li>Node.js</li>
+                    <li>Python</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>Definition List (dl)</h2>
+        <dl>
+            <dt>HTML</dt>
+            <dd>HyperText Markup Language - bahasa markup untuk struktur halaman web</dd>
+            <dt>CSS</dt>
+            <dd>Cascading Style Sheets - bahasa untuk styling tampilan web</dd>
+            <dt>JavaScript</dt>
+            <dd>Bahasa pemrograman untuk interaktivitas web</dd>
+        </dl>
+    </div>
+</body>
+
+</html>

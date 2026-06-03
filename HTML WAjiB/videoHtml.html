@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video & Audio Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .media-demo {
+            max-width: 700px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .media-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        video,
+        audio {
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .media-controls {
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .media-controls button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+        }
+
+        .media-controls span {
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="media-demo">
+        <h1>Media HTML5</h1>
+
+        <section class="media-section">
+            <h2>Video Player</h2>
+            <video id="myVideo" width="600" controls
+                poster="https://via.placeholder.com/600x338/2c3e50/ffffff?text=Video+Thumbnail">
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+                Browser Anda tidak mendukung tag video.
+            </video>
+            <div class="media-controls">
+                <button id="btnPlayVideo">Play/Pause</button>
+                <button id="btnMuteVideo">Mute/Unmute</button>
+                <span id="videoStatus">Status: Stopped</span>
+            </div>
+        </section>
+
+        <section class="media-section">
+            <h2>Audio Player</h2>
+            <audio id="myAudio" controls>
+                <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+                <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
+                Browser Anda tidak mendukung tag audio.
+            </audio>
+            <div class="media-controls">
+                <button id="btnPlayAudio">Play/Pause</button>
+                <span id="audioStatus">Status: Stopped</span>
+            </div>
+        </section>
+    </div>
+    <script>
+        var video = document.getElementById('myVideo');
+        var audio = document.getElementById('myAudio');
+        var videoStatus = document.getElementById('videoStatus');
+        var audioStatus = document.getElementById('audioStatus');
+
+        document.getElementById('btnPlayVideo').addEventListener('click', function () {
+            if (video.paused) {
+                video.play();
+                videoStatus.textContent = 'Status: Playing';
+            } else {
+                video.pause();
+                videoStatus.textContent = 'Status: Paused';
+            }
+        });
+
+        document.getElementById('btnMuteVideo').addEventListener('click', function () {
+            video.muted = !video.muted;
+            this.textContent = video.muted ? 'Unmute' : 'Mute';
+        });
+
+        document.getElementById('btnPlayAudio').addEventListener('click', function () {
+            if (audio.paused) {
+                audio.play();
+                audioStatus.textContent = 'Status: Playing';
+            } else {
+                audio.pause();
+                audioStatus.textContent = 'Status: Paused';
+            }
+        });
+    </script>
+</body>
+
+</html>

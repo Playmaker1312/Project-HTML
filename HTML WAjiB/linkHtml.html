@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anchor Tag Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #2980b9;
+        }
+
+        a[target="_blank"]::after {
+            content: " \2197";
+            font-size: 0.8em;
+        }
+
+        a[href^="mailto"] {
+            color: #27ae60;
+        }
+
+        a[href^="tel"] {
+            color: #e67e22;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="link-demo">
+        <h1>Contoh Link (Anchor Tag)</h1>
+
+        <h2>Link Eksternal</h2>
+        <p><a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Buka Google (tab baru)</a></p>
+        <p><a href="https://www.github.com">Buka GitHub (tab sama)</a></p>
+
+        <h2>Link Internal</h2>
+        <p><a href="tentang.html">Halaman Tentang</a></p>
+        <p><a href="blog/artikel1.html">Artikel 1</a></p>
+
+        <h2>Link Anchor (ke bagian halaman)</h2>
+        <p><a href="#section-bawah">Lompat ke bagian bawah</a></p>
+
+        <h2>Link Khusus</h2>
+        <p><a href="mailto:info@example.com">Kirim Email</a></p>
+        <p><a href="tel:+628123456789">Telepon: +62 812-3456-789</a></p>
+        <p><a href="document.pdf" download>Download PDF</a></p>
+
+        <div id="section-bawah" style="margin-top: 400px; padding: 40px; background: #f0f8ff; border-radius: 8px;">
+            <h2>Bagian Bawah Halaman</h2>
+            <p>Anda sampai di sini via link anchor!</p>
+            <a href="#">Kembali ke atas</a>
+        </div>
+    </div>
+</body>
+
+</html>

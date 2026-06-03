@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Parse Stringify</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .json-demo {
+            max-width: 500px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .json-section {
+            margin: 20px 0;
+        }
+
+        .json-box {
+            background: #f8f9fa;
+            padding: 16px;
+            border-radius: 8px;
+        }
+
+        .json-label {
+            font-weight: 600;
+            font-size: 13px;
+            margin: 8px 0 4px;
+            color: #555;
+        }
+
+        .json-code {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            min-height: 30px;
+            white-space: pre-wrap;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: monospace;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+            margin: 8px 4px 8px 0;
+            font-size: 13px;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        .json-log {
+            margin-top: 16px;
+            padding: 12px;
+            background: #f0f8ff;
+            border-radius: 8px;
+            font-size: 13px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="json-demo">
+        <h1>JSON.parse & JSON.stringify</h1>
+
+        <div class="json-section">
+            <h2>Stringify: Object -> JSON String</h2>
+            <div class="json-box">
+                <div class="json-label">Source Object:</div>
+                <pre id="sourceObj" class="json-code"></pre>
+                <button id="btnStringify">Stringify</button>
+                <div class="json-label">JSON String:</div>
+                <pre id="jsonString" class="json-code">(klik tombol)</pre>
+            </div>
+        </div>
+
+        <div class="json-section">
+            <h2>Parse: JSON String -> Object</h2>
+            <div class="json-box">
+                <div class="json-label">JSON String:</div>
+                <textarea id="jsonInput" rows="4"
+                    spellcheck="false">{"name":"Jane","age":28,"hobbies":["reading","coding"]}</textarea>
+                <button id="btnParse">Parse</button>
+                <button id="btnInvalid">Parse Invalid JSON</button>
+                <div class="json-label">Hasil Object:</div>
+                <pre id="parsedObj" class="json-code">(klik tombol)</pre>
+            </div>
+        </div>
+
+        <div class="json-section">
+            <h2>Pretty Print & Formatting</h2>
+            <button id="btnPretty">Pretty Print Object</button>
+            <pre id="prettyOutput" class="json-code">(klik tombol)</pre>
+        </div>
+
+        <div id="jsonLog" class="json-log"></div>
+    </div>
+    <script>
+        var sourceObj = document.getElementById('sourceObj');
+        var jsonString = document.getElementById('jsonString');
+        var jsonInput = document.getElementById('jsonInput');
+        var parsedObj = document.getElementById('parsedObj');
+        var prettyOutput = document.getElementById('prettyOutput');
+        var log = document.getElementById('jsonLog');
+
+        var sampleData = {
+            name: 'John Doe',
+            age: 30,
+            isActive: true,
+            address: {
+                city: 'Jakarta',
+                country: 'Indonesia'
+            },
+            hobbies: ['coding', 'reading', 'gaming'],
+            score: null
+        };
+
+        sourceObj.textContent = JSON.stringify(sampleData, null, 2);
+
+        document.getElementById('btnStringify').addEventListener('click', function () {
+            var str = JSON.stringify(sampleData);
+            jsonString.textContent = str;
+            log.textContent = 'Stringify: objek diubah menjadi string JSON (' + str.length + ' karakter)';
+        });
+
+        document.getElementById('btnParse').addEventListener('click', function () {
+            try {
+                var input = jsonInput.value;
+                var obj = JSON.parse(input);
+                parsedObj.textContent = JSON.stringify(obj, null, 2);
+                log.textContent = 'Parse sukses! Tipe: ' + typeof obj + ', Keys: ' + Object.keys(obj).join(', ');
+            } catch (e) {
+                parsedObj.textContent = 'ERROR: ' + e.message;
+                log.textContent = 'Parse gagal: ' + e.message;
+            }
+        });
+
+        document.getElementById('btnInvalid').addEventListener('click', function () {
+            try {
+                var invalid = '{name: "test"}';
+                JSON.parse(invalid);
+            } catch (e) {
+                parsedObj.textContent = 'Contoh error: JSON.parse("{name: test}") gagal';
+                log.textContent = 'Error: ' + e.message + ' (JSON valid harus menggunakan double quotes)';
+            }
+        });
+
+        document.getElementById('btnPretty').addEventListener('click', function () {
+            var complex = {
+                id: 1,
+                title: 'JSON Pretty Print',
+                tags: ['javascript', 'json', 'tutorial'],
+                metadata: {
+                    author: 'Admin',
+                    date: new Date().toISOString(),
+                    published: true
+                }
+            };
+            var pretty = JSON.stringify(complex, null, 4);
+            prettyOutput.textContent = pretty;
+            log.textContent = 'Pretty print dengan spacing 4 (mudah dibaca)';
+        });
+    </script>
+</body>
+
+</html>

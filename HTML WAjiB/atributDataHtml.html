@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Attributes Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .data-demo {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .product-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+
+        .product-card h3 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+        }
+
+        .product-card p {
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin: 0 0 15px 0;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .btn-detail {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 4px;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+        }
+
+        .btn-detail:hover {
+            background: #2980b9;
+        }
+
+        #output-panel {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f0f8ff;
+            border-radius: 8px;
+        }
+
+        #outputData {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0 0 0;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="data-demo">
+        <h1>Data Attributes (data-*)</h1>
+
+        <div class="product-list">
+            <div class="product-card" data-id="101" data-name="Laptop" data-price="10000000" data-category="elektronik"
+                data-stock="true">
+                <h3>Laptop</h3>
+                <p>Rp 10.000.000</p>
+                <button class="btn-detail">Lihat Detail</button>
+            </div>
+            <div class="product-card" data-id="102" data-name="Mouse" data-price="150000" data-category="aksesoris"
+                data-stock="true">
+                <h3>Mouse</h3>
+                <p>Rp 150.000</p>
+                <button class="btn-detail">Lihat Detail</button>
+            </div>
+            <div class="product-card" data-id="103" data-name="Keyboard" data-price="350000" data-category="aksesoris"
+                data-stock="false">
+                <h3>Keyboard</h3>
+                <p>Rp 350.000</p>
+                <span class="badge">Stok Habis</span>
+                <button class="btn-detail">Lihat Detail</button>
+            </div>
+        </div>
+
+        <div id="output-panel">
+            <h3>Data Produk:</h3>
+            <pre id="outputData">Klik "Lihat Detail" pada produk</pre>
+        </div>
+    </div>
+    <script>
+        var buttons = document.querySelectorAll('.btn-detail');
+
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener('click', function () {
+                var card = this.closest('.product-card');
+                var data = {
+                    id: card.dataset.id,
+                    name: card.dataset.name,
+                    price: parseInt(card.dataset.price),
+                    category: card.dataset.category,
+                    stock: card.dataset.stock === 'true'
+                };
+                document.getElementById('outputData').textContent = JSON.stringify(data, null, 2);
+            });
+        }
+    </script>
+</body>
+
+</html>

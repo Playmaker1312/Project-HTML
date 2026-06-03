@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .flex-demo {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 1.1rem;
+            margin-top: 30px;
+        }
+
+        .flex-container {
+            display: flex;
+            background: #f0f0f0;
+            padding: 12px;
+            border-radius: 8px;
+            min-height: 60px;
+        }
+
+        .space-between {
+            justify-content: space-between;
+        }
+
+        .center-both {
+            justify-content: center;
+            align-items: center;
+            min-height: 120px;
+        }
+
+        .column {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .wrap {
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .grow-demo {
+            gap: 10px;
+        }
+
+        .flex-item {
+            background: #3498db;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+            min-width: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-demo">
+        <h1>CSS Flexbox</h1>
+
+        <h2>justify-content: space-between</h2>
+        <div class="flex-container space-between">
+            <div class="flex-item">1</div>
+            <div class="flex-item">2</div>
+            <div class="flex-item">3</div>
+            <div class="flex-item">4</div>
+        </div>
+
+        <h2>justify-content: center + align-items: center</h2>
+        <div class="flex-container center-both">
+            <div class="flex-item">Tengah</div>
+        </div>
+
+        <h2>flex-direction: column</h2>
+        <div class="flex-container column">
+            <div class="flex-item">A</div>
+            <div class="flex-item">B</div>
+            <div class="flex-item">C</div>
+        </div>
+
+        <h2>flex-wrap: wrap + gap</h2>
+        <div class="flex-container wrap">
+            <div class="flex-item">Item 1</div>
+            <div class="flex-item">Item 2</div>
+            <div class="flex-item">Item 3</div>
+            <div class="flex-item">Item 4</div>
+            <div class="flex-item">Item 5</div>
+            <div class="flex-item">Item 6</div>
+        </div>
+
+        <h2>flex-grow berbeda</h2>
+        <div class="flex-container grow-demo">
+            <div class="flex-item" style="flex:1;">1</div>
+            <div class="flex-item" style="flex:2;">2</div>
+            <div class="flex-item" style="flex:1;">1</div>
+        </div>
+    </div>
+</body>
+
+</html>

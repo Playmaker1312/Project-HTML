@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tag Image Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .gallery {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        figure {
+            margin: 0;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        figure img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            display: block;
+        }
+
+        figcaption {
+            text-align: center;
+            margin-top: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        img[alt] {
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gallery">
+        <h2>Galeri Gambar</h2>
+        <div class="image-grid">
+            <figure>
+                <img src="https://via.placeholder.com/300x200/3498db/ffffff?text=Gambar+1"
+                    alt="Kotak biru dengan teks Gambar 1" width="300" height="200">
+                <figcaption>Gambar dengan background biru</figcaption>
+            </figure>
+            <figure>
+                <img src="https://via.placeholder.com/300x200/e74c3c/ffffff?text=Gambar+2"
+                    alt="Kotak merah dengan teks Gambar 2" width="300" height="200">
+                <figcaption>Gambar dengan background merah</figcaption>
+            </figure>
+            <figure>
+                <img src="https://via.placeholder.com/300x200/2ecc71/ffffff?text=Gambar+3"
+                    alt="Kotak hijau dengan teks Gambar 3" width="300" height="200" loading="lazy">
+                <figcaption>Gambar dengan lazy loading</figcaption>
+            </figure>
+            <figure>
+                <img src="gambar-tidak-ada.jpg" alt="Gambar tidak tersedia - teks alt muncul" width="300" height="200">
+                <figcaption>Contoh gambar gagal load (alt muncul)</figcaption>
+            </figure>
+        </div>
+    </div>
+</body>
+
+</html>

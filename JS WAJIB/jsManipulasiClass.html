@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>classList Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .classlist-demo {
+            max-width: 500px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .box-init {
+            width: 200px;
+            height: 100px;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ecf0f1;
+            border: 2px solid #bdc3c7;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #7f8c8d;
+            transition: all 0.3s;
+        }
+
+        .box-init.active {
+            background: #3498db;
+            color: white;
+            border-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .box-init.error {
+            background: #e74c3c;
+            color: white;
+            border-color: #c0392b;
+        }
+
+        .box-init.success {
+            background: #27ae60;
+            color: white;
+            border-color: #229954;
+        }
+
+        .status-bar {
+            text-align: center;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+
+        #currentClass {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 2px 8px;
+            border-radius: 3px;
+        }
+
+        .btn-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .ctrl-btn {
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .ctrl-btn:hover {
+            background: #2980b9;
+        }
+
+        .ctrl-btn.reset {
+            background: #95a5a6;
+        }
+
+        .ctrl-btn.reset:hover {
+            background: #7f8c8d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="classlist-demo">
+        <h1>Manipulasi Class dengan classList</h1>
+
+        <div id="targetBox" class="box-init">
+            Target Element
+        </div>
+
+        <div class="status-bar">
+            <span>Class saat ini: </span>
+            <code id="currentClass">box-init</code>
+        </div>
+
+        <div class="btn-grid">
+            <button id="btnAdd" class="ctrl-btn">add "active"</button>
+            <button id="btnRemove" class="ctrl-btn">remove "active"</button>
+            <button id="btnToggle" class="ctrl-btn">toggle "active"</button>
+            <button id="btnContains" class="ctrl-btn">contains "active"?</button>
+            <button id="btnAddError" class="ctrl-btn">add "error"</button>
+            <button id="btnReplace" class="ctrl-btn">replace "error" -> "success"</button>
+            <button id="btnReset" class="ctrl-btn reset">Reset</button>
+        </div>
+    </div>
+    <script>
+        var box = document.getElementById('targetBox');
+        var currentClass = document.getElementById('currentClass');
+
+        function updateClassDisplay() {
+            currentClass.textContent = box.className || '(no classes)';
+        }
+
+        document.getElementById('btnAdd').addEventListener('click', function () {
+            box.classList.add('active');
+            updateClassDisplay();
+        });
+
+        document.getElementById('btnRemove').addEventListener('click', function () {
+            box.classList.remove('active');
+            updateClassDisplay();
+        });
+
+        document.getElementById('btnToggle').addEventListener('click', function () {
+            box.classList.toggle('active');
+            updateClassDisplay();
+        });
+
+        document.getElementById('btnContains').addEventListener('click', function () {
+            var hasActive = box.classList.contains('active');
+            var msg = hasActive ? 'YA, class "active" ada' : 'TIDAK, class "active" tidak ada';
+            alert(msg);
+        });
+
+        document.getElementById('btnAddError').addEventListener('click', function () {
+            box.classList.remove('success');
+            box.classList.add('error');
+            updateClassDisplay();
+        });
+
+        document.getElementById('btnReplace').addEventListener('click', function () {
+            if (box.classList.contains('error')) {
+                box.classList.replace('error', 'success');
+            }
+            updateClassDisplay();
+        });
+
+        document.getElementById('btnReset').addEventListener('click', function () {
+            box.className = 'box-init';
+            updateClassDisplay();
+        });
+
+        updateClassDisplay();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animation Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .anim-demo {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-top: 30px;
+        }
+
+        .anim-row {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            min-height: 100px;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-40px);
+            }
+        }
+
+        .anim-ball {
+            width: 60px;
+            height: 60px;
+            background: #e74c3c;
+            border-radius: 50%;
+        }
+
+        .bounce {
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @keyframes fadeSlide {
+            0% {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .fade-slide {
+            animation: fadeSlide 1.5s ease-out;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 0.7;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .anim-circle {
+            width: 80px;
+            height: 80px;
+            background: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e0e0e0;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .multi-anim {
+            gap: 8px;
+        }
+
+        .anim-bar {
+            width: 40px;
+            border-radius: 4px;
+            background: #3498db;
+        }
+
+        @keyframes barAnim {
+            0% {
+                height: 20px;
+            }
+
+            50% {
+                height: 80px;
+            }
+
+            100% {
+                height: 20px;
+            }
+        }
+
+        .bar1 {
+            animation: barAnim 1.2s ease-in-out infinite;
+            animation-delay: 0s;
+        }
+
+        .bar2 {
+            animation: barAnim 1.2s ease-in-out infinite;
+            animation-delay: 0.15s;
+        }
+
+        .bar3 {
+            animation: barAnim 1.2s ease-in-out infinite;
+            animation-delay: 0.3s;
+        }
+
+        .bar4 {
+            animation: barAnim 1.2s ease-in-out infinite;
+            animation-delay: 0.45s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="anim-demo">
+        <h1>CSS Animation & Keyframes</h1>
+
+        <h2>Bounce Animation</h2>
+        <div class="anim-row">
+            <div class="anim-ball bounce"></div>
+        </div>
+
+        <h2>Fade In & Slide</h2>
+        <div class="anim-row">
+            <div class="anim-box fade-slide">Muncul</div>
+        </div>
+
+        <h2>Pulse / Denyut</h2>
+        <div class="anim-row">
+            <div class="anim-circle pulse">Hidup</div>
+        </div>
+
+        <h2>Spinner Loading</h2>
+        <div class="anim-row">
+            <div class="spinner"></div>
+        </div>
+
+        <h2>Multiple Animasi dengan Berbeda Timing</h2>
+        <div class="anim-row multi-anim">
+            <div class="anim-bar bar1"></div>
+            <div class="anim-bar bar2"></div>
+            <div class="anim-bar bar3"></div>
+            <div class="anim-bar bar4"></div>
+        </div>
+    </div>
+</body>
+
+</html>

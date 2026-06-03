@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo-class Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .pseudo-demo {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-top: 30px;
+            font-size: 1.1rem;
+        }
+
+        .interactive-demo {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .pseudo-btn {
+            padding: 10px 20px;
+            border: 2px solid #3498db;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .pseudo-btn:hover {
+            background: #3498db;
+            color: white;
+        }
+
+        .pseudo-btn:active {
+            transform: scale(0.95);
+        }
+
+        .pseudo-input {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        .pseudo-input:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        .pseudo-link {
+            color: #3498db;
+        }
+
+        .pseudo-link:visited {
+            color: #9b59b6;
+        }
+
+        .list-demo li:first-child {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .list-demo li:last-child {
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .list-demo li:nth-child(3) {
+            background: #fff3cd;
+            padding: 4px 8px;
+        }
+
+        .list-striped {
+            list-style: none;
+            padding: 0;
+        }
+
+        .list-striped li {
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .list-striped li:nth-child(even) {
+            background: #f0f8ff;
+        }
+
+        .not-demo {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .tag {
+            background: #e0e0e0;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .tag:not(.highlight) {
+            background: #e0e0e0;
+            color: #555;
+        }
+
+        .tag.highlight {
+            background: #3498db;
+            color: white;
+        }
+
+        .empty-box {
+            width: 60px;
+            height: 60px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .empty-box:empty {
+            background: #ffe0e0;
+        }
+
+        .empty-box:empty::after {
+            content: "Kosong";
+            font-size: 10px;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pseudo-demo">
+        <h1>CSS Pseudo-class</h1>
+
+        <h2>:hover, :focus, :active</h2>
+        <div class="interactive-demo">
+            <button class="pseudo-btn">Hover & Click Saya</button>
+            <input type="text" class="pseudo-input" placeholder="Focus saya" value="">
+            <a href="#" class="pseudo-link">Link example</a>
+        </div>
+
+        <h2>:first-child, :last-child, :nth-child</h2>
+        <ul class="list-demo">
+            <li>Item 1 (first-child)</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+            <li>Item 5 (last-child)</li>
+        </ul>
+
+        <h2>:nth-child(even) - genap</h2>
+        <ul class="list-striped">
+            <li>Baris 1</li>
+            <li>Baris 2</li>
+            <li>Baris 3</li>
+            <li>Baris 4</li>
+            <li>Baris 5</li>
+            <li>Baris 6</li>
+        </ul>
+
+        <h2>:not() dan :empty</h2>
+        <div class="not-demo">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag highlight">JS</span>
+            <span class="tag">Python</span>
+            <div class="empty-box"></div>
+            <div class="empty-box">Isi</div>
+        </div>
+    </div>
+</body>
+
+</html>

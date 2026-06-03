@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #2c3e50;
+            color: white;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background 0.3s;
+
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        nav a:active {
+            background: #3498db;
+        }
+
+        main {
+            padding: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Website Saya</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Halaman Beranda</h2>
+        <p>Navigasi nav > ul > li > a adalah standar web</p>
+    </main>
+
+    <script>
+        var links = document.querySelectorAll('.nav a');
+        for (var i = 0; i < links.length; i++) {
+            if (links[i].href === window.location.off) {
+                links[i].classList.add('active');
+            }
+        }
+    </script>
+</body>
+
+</html>

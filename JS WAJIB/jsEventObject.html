@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Object Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .eobj-demo {
+            max-width: 500px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 1.1rem;
+            margin-top: 25px;
+        }
+
+        .parent-box {
+            background: #e74c3c;
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .child-box {
+            background: #3498db;
+            color: white;
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
+        .prevent-demo {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .prevent-demo a,
+        .prevent-demo button {
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .prevent-demo a {
+            display: block;
+            background: #3498db;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .prevent-demo form {
+            display: flex;
+            gap: 8px;
+        }
+
+        .prevent-demo input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        .prevent-demo button {
+            padding: 8px 16px;
+            border: none;
+            background: #27ae60;
+            color: white;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .info-demo {
+            background: #f0f8ff;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 10px 0;
+            cursor: crosshair;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            font-family: monospace;
+            margin-top: 10px;
+        }
+
+        .eobj-log {
+            margin-top: 16px;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 13px;
+            font-family: monospace;
+            min-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="eobj-demo">
+        <h1>Event Object</h1>
+
+        <h2>target vs currentTarget & preventDefault</h2>
+        <div id="parent" class="parent-box">
+            Parent Box
+            <div id="child" class="child-box">Child Box (Klik saya)</div>
+        </div>
+
+        <h2>preventDefault()</h2>
+        <div class="prevent-demo">
+            <a href="https://www.google.com" id="linkPrevent">Google (klik - tidak akan navigate)</a>
+            <form id="formPrevent">
+                <input type="text" placeholder="Tekan Enter - tidak submit">
+                <button type="submit">Submit (dicegah)</button>
+            </form>
+        </div>
+
+        <h2>Mouse & Keyboard Info</h2>
+        <div class="info-demo" id="infoArea">
+            <p>Gerakan mouse atau tekan tombol di area ini</p>
+            <div class="info-grid">
+                <div>Mouse X: <span id="mouseX">0</span></div>
+                <div>Mouse Y: <span id="mouseY">0</span></div>
+                <div>Key: <span id="keyPressed">-</span></div>
+                <div>Event Type: <span id="eventType">-</span></div>
+            </div>
+        </div>
+
+        <div id="eventObjLog" class="eobj-log"></div>
+    </div>
+    <script>
+        var eLog = document.getElementById('eventObjLog');
+
+        function logEvent(msg) {
+            eLog.textContent = msg;
+        }
+
+        document.getElementById('parent').addEventListener('click', function (e) {
+            logEvent('parent: target=' + e.target.id + ', currentTarget=' + e.currentTarget.id + ', type=' + e.type);
+        });
+
+        document.getElementById('child').addEventListener('click', function (e) {
+            logEvent('child: target=' + e.target.id + ', currentTarget=' + e.currentTarget.id);
+        });
+
+        document.getElementById('linkPrevent').addEventListener('click', function (e) {
+            e.preventDefault();
+            logEvent('preventDefault: Link tidak jadi navigasi');
+        });
+
+        document.getElementById('formPrevent').addEventListener('submit', function (e) {
+            e.preventDefault();
+            logEvent('preventDefault: Form tidak jadi submit');
+        });
+
+        document.getElementById('infoArea').addEventListener('mousemove', function (e) {
+            document.getElementById('mouseX').textContent = e.clientX;
+            document.getElementById('mouseY').textContent = e.clientY;
+            document.getElementById('eventType').textContent = e.type;
+        });
+
+        document.getElementById('infoArea').addEventListener('keydown', function (e) {
+            document.getElementById('keyPressed').textContent = e.key + ' (' + e.code + ')';
+            document.getElementById('eventType').textContent = e.type;
+        });
+
+        document.getElementById('infoArea').setAttribute('tabindex', '0');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Figure & Figcaption</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f6fa;
+        }
+
+        .content {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        figure {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .image-figure {
+            text-align: center;
+        }
+
+        .image-figure img {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+
+        figcaption {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .code-figure pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 0;
+        }
+
+        .code-figure figcaption {
+            text-align: left;
+        }
+
+        .quote-figure blockquote {
+            font-size: 1.2rem;
+            color: #555;
+            font-style: italic;
+            margin: 10px 0;
+            padding: 10px 20px;
+            border-left: 4px solid #3498db;
+        }
+
+        .quote-figure figcaption {
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <article class="content">
+        <h1>Penggunaan Figure & Figcaption</h1>
+
+        <p>Berikut adalah contoh penggunaan tag figure untuk berbagai jenis konten media:</p>
+
+        <figure class="image-figure">
+            <img src="https://via.placeholder.com/600x300/3498db/ffffff?text=Contoh+Gambar"
+                alt="Contoh gambar placeholder biru" style="width:100%;height:auto;">
+            <figcaption>Gambar 1: Contoh gambar dengan caption di bawah. Figcaption menjelaskan isi gambar.</figcaption>
+        </figure>
+
+        <figure class="code-figure">
+            <pre><code>function hello() {
+  console.log('Hello, World!');
+}</code></pre>
+            <figcaption>Kode 1: Fungsi hello dalam JavaScript</figcaption>
+        </figure>
+
+        <figure class="quote-figure">
+            <blockquote>
+                "The best way to predict the future is to invent it."
+            </blockquote>
+            <figcaption>— Alan Kay, <cite>Computer Scientist</cite></figcaption>
+        </figure>
+    </article>
+</body>
+
+</html>

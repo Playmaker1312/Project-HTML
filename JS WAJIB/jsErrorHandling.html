@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Handling Fetch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .error-demo {
+            max-width: 550px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .error-controls {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .error-controls button {
+            padding: 10px 14px;
+            border: none;
+            border-radius: 6px;
+            background: #e74c3c;
+            color: white;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .error-controls button:hover {
+            background: #c0392b;
+        }
+
+        .error-controls button:first-child {
+            background: #27ae60;
+        }
+
+        .error-controls button:first-child:hover {
+            background: #229954;
+        }
+
+        .error-result {
+            background: #f8f9fa;
+            padding: 16px;
+            border-radius: 8px;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .result-label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .result-status {
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .status-success .result-status {
+            background: #27ae60;
+            color: white;
+        }
+
+        .status-error .result-status {
+            background: #e74c3c;
+            color: white;
+        }
+
+        #errorOutput {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            min-height: 80px;
+            white-space: pre-wrap;
+        }
+
+        .error-info {
+            margin-top: 16px;
+            padding: 16px;
+            background: #fff3cd;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+        .error-info h3 {
+            margin: 0 0 8px 0;
+            font-size: 14px;
+            color: #856404;
+        }
+
+        .error-info code {
+            background: #ffeaa7;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .error-info ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .error-info li {
+            margin: 4px 0;
+        }
+
+        .error-log {
+            margin-top: 16px;
+            padding: 12px;
+            background: #f0f8ff;
+            border-radius: 8px;
+            font-size: 13px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="error-demo">
+        <h1>Error Handling Fetch API</h1>
+
+        <div class="error-controls">
+            <button id="btnSuccess">Request Sukses</button>
+            <button id="btn404">HTTP 404 Error</button>
+            <button id="btn500">HTTP 500 Error</button>
+            <button id="btnNetwork">Network Error (offline)</button>
+            <button id="btnInvalidJSON">Invalid JSON Response</button>
+            <button id="btnAll">Semua di Atas (sequential)</button>
+        </div>
+
+        <div class="error-result">
+            <div class="result-header">
+                <span class="result-label">Response:</span>
+                <span class="result-status" id="httpStatus">-</span>
+            </div>
+            <pre id="errorOutput">Klik tombol untuk test error handling...</pre>
+        </div>
+
+        <div class="error-info">
+            <h3>Cara Handling:</h3>
+            <ul>
+                <li><code>try { ... } catch (err) { ... }</code></li>
+                <li>Cek <code>response.ok</code> untuk HTTP errors</li>
+                <li><code>throw new Error()</code> untuk custom error</li>
+                <li><code>finally { ... }</code> untuk cleanup</li>
+            </ul>
+        </div>
+
+        <div id="errorLog" class="error-log">Status: Siap</div>
+    </div>
+    <script>
+        var output = document.getElementById('errorOutput');
+        var httpStatus = document.getElementById('httpStatus');
+        var resultContainer = document.querySelector('.error-result');
+        var log = document.getElementById('errorLog');
+
+        var API = 'https://jsonplaceholder.typicode.com';
+
+        function setStatus(text, isError) {
+            log.textContent = 'Status: ' + text;
+            resultContainer.className = 'error-result' + (isError ? ' status-error' : ' status-success');
+        }
+
+        async function safeFetch(url, label) {
+            try {
+                setStatus('Mengambil ' + label + '...', false);
+                httpStatus.textContent = 'Loading...';
+
+                var response = await fetch(url);
+
+                httpStatus.textContent = response.status + ' ' + response.statusText;
+
+                if (!response.ok) {
+                    throw new Error('HTTP Error ' + response.status + ': ' + response.statusText + ' untuk ' + label);
+                }
+
+                var data = await response.json();
+                var text = typeof data === 'object' ? JSON.stringify(data, null, 2).substring(0, 500) : String(data);
+                output.textContent = 'Sukses! Data dari ' + label + ':\n\n' + text;
+                setStatus('Sukses: ' + label + ' - Status ' + response.status, false);
+
+            } catch (err) {
+                var errorMsg = '';
+                if (err.name === 'TypeError') {
+                    errorMsg = 'Network Error: Tidak bisa terhubung ke server.\n' +
+                        'Pesan: ' + err.message + '\n\n' +
+                        'Penyebab: Koneksi internet terputus, server down, atau CORS error.';
+                } else if (err.message.startsWith('HTTP Error')) {
+                    errorMsg = 'HTTP Error tertangkap:\n' + err.message + '\n\n' +
+                        'Solusi: Periksa endpoint API atau coba lagi nanti.';
+                } else if (err instanceof SyntaxError) {
+                    errorMsg = 'Parse Error: Response bukan JSON valid.\n' +
+                        'Pesan: ' + err.message + '\n\n' +
+                        'Solusi: Periksa Content-Type response dari server.';
+                } else {
+                    errorMsg = 'Error: ' + err.message;
+                }
+                output.textContent = errorMsg;
+                setStatus('Error: ' + err.message, true);
+            }
+        }
+
+        document.getElementById('btnSuccess').addEventListener('click', function () {
+            safeFetch(API + '/todos/1', 'Todo 1');
+        });
+
+        document.getElementById('btn404').addEventListener('click', function () {
+            safeFetch(API + '/nonexistent', 'endpoint tidak ada');
+        });
+
+        document.getElementById('btn500').addEventListener('click', function () {
+            safeFetch('https://httpstat.us/500', 'HTTP 500 test');
+        });
+
+        document.getElementById('btnNetwork').addEventListener('click', function () {
+            safeFetch('https://nonexistent-domain-xyz123.com/data', 'domain tidak valid');
+        });
+
+        document.getElementById('btnInvalidJSON').addEventListener('click', function () {
+            safeFetch('https://www.google.com', 'Google HTML (bukan JSON)');
+        });
+
+        document.getElementById('btnAll').addEventListener('click', async function () {
+            output.textContent = 'Menjalankan semua test secara sequential...\n\n';
+            httpStatus.textContent = 'Multi-test...';
+
+            var tests = [
+                { url: API + '/todos/1', label: 'Sukses' },
+                { url: API + '/nonexistent', label: '404' },
+                { url: 'https://httpstat.us/500', label: '500' },
+                { url: 'https://www.google.com', label: 'Invalid JSON' }
+            ];
+
+            for (var i = 0; i < tests.length; i++) {
+                output.textContent += 'Test ' + (i + 1) + ': ' + tests[i].label + '\n';
+                output.textContent += '  Mencoba ' + tests[i].url + '...\n';
+                try {
+                    var r = await fetch(tests[i].url);
+                    output.textContent += '  Status: ' + r.status + ' ' + r.statusText + '\n';
+                    if (!r.ok) {
+                        output.textContent += '  -> Error (HTTP ' + r.status + ')\n';
+                    } else {
+                        var txt = await r.text();
+                        output.textContent += '  -> Sukses (' + txt.length + ' bytes)\n';
+                    }
+                } catch (err) {
+                    output.textContent += '  -> Network Error: ' + err.message + '\n';
+                }
+                output.textContent += '\n';
+            }
+
+            setStatus('Semua test selesai', false);
+        });
+    </script>
+</body>
+
+</html>

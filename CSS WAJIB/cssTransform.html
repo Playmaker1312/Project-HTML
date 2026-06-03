@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Transform Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .transform-demo {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-top: 30px;
+        }
+
+        .demo-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            min-height: 100px;
+            align-items: center;
+        }
+
+        .t-box {
+            width: 140px;
+            height: 100px;
+            background: #3498db;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 12px;
+            text-align: center;
+            padding: 4px;
+        }
+
+        .t-translate {
+            transform: translate(30px, 20px);
+            background: #e74c3c;
+        }
+
+        .t-translate-x {
+            transform: translateX(40px);
+            background: #27ae60;
+        }
+
+        .t-translate-y {
+            transform: translateY(-20px);
+            background: #9b59b6;
+        }
+
+        .t-rotate-45 {
+            transform: rotate(45deg);
+            background: #e67e22;
+        }
+
+        .t-rotate-90 {
+            transform: rotate(90deg);
+            background: #2c3e50;
+        }
+
+        .t-rotate-180 {
+            transform: rotate(180deg);
+            background: #e74c3c;
+        }
+
+        .t-scale-12 {
+            transform: scale(1.2);
+            background: #1abc9c;
+        }
+
+        .t-scale-15 {
+            transform: scale(1.5);
+            background: #f39c12;
+        }
+
+        .t-scale-05 {
+            transform: scale(0.5);
+            background: #34495e;
+        }
+
+        .t-skew-10 {
+            transform: skew(10deg);
+            background: #d35400;
+        }
+
+        .t-skew-20 {
+            transform: skew(20deg);
+            background: #c0392b;
+        }
+
+        .t-skew-neg {
+            transform: skew(-15deg);
+            background: #8e44ad;
+        }
+
+        .t-combo {
+            background: #2980b9;
+            transition: transform 0.4s ease;
+        }
+
+        .t-combo:hover {
+            transform: translateX(20px) rotate(10deg) scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="transform-demo">
+        <h1>CSS Transform</h1>
+
+        <h2>Translate (Memindahkan)</h2>
+        <div class="demo-row">
+            <div class="t-box t-translate">translate(30px, 20px)</div>
+            <div class="t-box t-translate-x">translateX(40px)</div>
+            <div class="t-box t-translate-y">translateY(-20px)</div>
+        </div>
+
+        <h2>Rotate (Memutar)</h2>
+        <div class="demo-row">
+            <div class="t-box t-rotate-45">rotate(45deg)</div>
+            <div class="t-box t-rotate-90">rotate(90deg)</div>
+            <div class="t-box t-rotate-180">rotate(180deg)</div>
+        </div>
+
+        <h2>Scale (Memperbesar/Memperkecil)</h2>
+        <div class="demo-row">
+            <div class="t-box t-scale-12">scale(1.2)</div>
+            <div class="t-box t-scale-15">scale(1.5)</div>
+            <div class="t-box t-scale-05">scale(0.5)</div>
+        </div>
+
+        <h2>Skew (Memiringkan)</h2>
+        <div class="demo-row">
+            <div class="t-box t-skew-10">skew(10deg)</div>
+            <div class="t-box t-skew-20">skew(20deg)</div>
+            <div class="t-box t-skew-neg">skew(-15deg)</div>
+        </div>
+
+        <h2>Kombinasi dengan Hover</h2>
+        <div class="demo-row">
+            <div class="t-box t-combo">Hover me!</div>
+        </div>
+    </div>
+</body>
+
+</html>

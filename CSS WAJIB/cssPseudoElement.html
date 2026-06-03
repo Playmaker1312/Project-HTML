@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo-element Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .pe-demo {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-top: 30px;
+            font-size: 1.1rem;
+        }
+
+        .with-icon::before {
+            content: "> ";
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .with-icon-after::after {
+            content: " \2713";
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .deco-card {
+            padding: 16px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin: 10px 0;
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .deco-card::before {
+            content: "i";
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            background: #3498db;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .deco-card.warning::before {
+            background: #e67e22;
+            content: "!";
+        }
+
+        .custom-placeholder {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        .custom-placeholder::placeholder {
+            color: #999;
+            font-style: italic;
+            font-size: 14px;
+        }
+
+        .custom-placeholder:focus::placeholder {
+            color: transparent;
+        }
+
+        ::selection {
+            background: #3498db;
+            color: white;
+        }
+
+        .first-letter-demo::first-letter {
+            font-size: 3rem;
+            float: left;
+            padding-right: 8px;
+            line-height: 1;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .first-letter-demo::first-line {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pe-demo">
+        <h1>CSS Pseudo-element</h1>
+
+        <h2>::before dan ::after</h2>
+        <div class="icon-list">
+            <p class="with-icon">Baca dokumentasi</p>
+            <p class="with-icon">Tulis kode</p>
+            <p class="with-icon with-icon-after">Testing</p>
+        </div>
+
+        <h2>::before untuk dekorasi</h2>
+        <div class="decorative-cards">
+            <div class="deco-card">Tips: Gunakan CSS variables</div>
+            <div class="deco-card warning">Warning: Jangan lupa testing</div>
+        </div>
+
+        <h2>::placeholder</h2>
+        <div>
+            <input type="text" class="custom-placeholder" placeholder="Masukkan nama Anda...">
+            <input type="email" class="custom-placeholder" placeholder="email@example.com">
+        </div>
+
+        <h2>::selection</h2>
+        <p class="selection-demo">Coba select / highlight teks ini. Warna background dan text akan berubah saat
+            diseleksi.</p>
+
+        <h2>::first-letter dan ::first-line</h2>
+        <p class="first-letter-demo">Ini adalah contoh penggunaan first-letter. Huruf pertama akan tampil lebih besar.
+            Ini adalah baris pertama yang akan di-style oleh first-line.</p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card - Responsive</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 16px;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            width: 100%;
+            max-width: 360px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 8px 32px rgba(0, 0, 0, 0.12);
+            transition: all 0.3s ease;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .name {
+            font-size: clamp(20px, 4vw, 24px);
+            font-weight: 700;
+            color: #2d3436;
+            text-align: center;
+        }
+
+        .title {
+            font-size: clamp(14px, 2.5vw, 16px);
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .bio {
+            font-size: clamp(13px, 2vw, 14px);
+            color: #636e72;
+            line-height: 1.6;
+            text-align: center;
+            padding: 0 8px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 14px;
+            margin: 6px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .social-links a {
+            color: #636e72;
+            font-size: 20px;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f0f2f5;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: white;
+            background: #667eea;
+            transform: translateY(-3px);
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            margin-top: 6px;
+            flex-direction: column;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        @media (min-width: 480px) {
+            .profile-card {
+                padding: 30px;
+                gap: 12px;
+            }
+
+            .avatar {
+                width: 120px;
+                height: 120px;
+            }
+
+            .social-links a {
+                width: 44px;
+                height: 44px;
+                font-size: 22px;
+            }
+
+            .actions {
+                flex-direction: row;
+            }
+
+            .btn {
+                font-size: 15px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 40px;
+            }
+
+            .profile-card {
+                max-width: 400px;
+                padding: 36px;
+            }
+
+            .avatar {
+                width: 130px;
+                height: 130px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="profile-card">
+        <img class="avatar" src="https://i.pravatar.cc/150?img=1" alt="Foto Profil">
+        <h1 class="name">Andi Pratama</h1>
+        <p class="title">Frontend Developer</p>
+        <p class="bio">Passionate frontend developer with 3 years of experience building responsive and accessible web
+            applications.</p>
+        <div class="social-links">
+            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i
+                    class="fab fa-linkedin-in"></i></a>
+            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i
+                    class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i
+                    class="fab fa-instagram"></i></a>
+        </div>
+        <div class="actions">
+            <button class="btn btn-primary">Follow</button>
+            <button class="btn btn-secondary">Message</button>
+        </div>
+    </div>
+</body>
+
+</html>

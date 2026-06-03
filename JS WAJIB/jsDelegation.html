@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Delegation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .delegation-demo {
+            max-width: 500px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .product-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+
+        .product-name {
+            flex: 1;
+            font-weight: 600;
+        }
+
+        .product-price {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .btn-buy {
+            padding: 6px 14px;
+            border: none;
+            border-radius: 4px;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .btn-buy:hover {
+            background: #2980b9;
+        }
+
+        .btn-delete-item {
+            padding: 6px 14px;
+            border: none;
+            border-radius: 4px;
+            background: #e74c3c;
+            color: white;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .btn-delete-item:hover {
+            background: #c0392b;
+        }
+
+        .delegation-controls {
+            display: flex;
+            gap: 8px;
+            margin: 16px 0;
+        }
+
+        .delegation-controls button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background: #9b59b6;
+            color: white;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .delegation-log {
+            margin-top: 16px;
+            padding: 12px;
+            background: #f0f8ff;
+            border-radius: 8px;
+            font-size: 13px;
+            font-family: monospace;
+            min-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="delegation-demo">
+        <h1>Event Delegation</h1>
+
+        <h2>Daftar Produk (dengan event delegation)</h2>
+
+        <ul id="productList" class="product-list">
+            <li class="product-item" data-id="1" data-price="10000">
+                <span class="product-name">Laptop</span>
+                <span class="product-price">Rp10.000</span>
+                <button class="btn-buy">Beli</button>
+                <button class="btn-delete-item">Hapus</button>
+            </li>
+            <li class="product-item" data-id="2" data-price="5000">
+                <span class="product-name">Mouse</span>
+                <span class="product-price">Rp5.000</span>
+                <button class="btn-buy">Beli</button>
+                <button class="btn-delete-item">Hapus</button>
+            </li>
+            <li class="product-item" data-id="3" data-price="7500">
+                <span class="product-name">Keyboard</span>
+                <span class="product-price">Rp7.500</span>
+                <button class="btn-buy">Beli</button>
+                <button class="btn-delete-item">Hapus</button>
+            </li>
+        </ul>
+
+        <div class="delegation-controls">
+            <button id="btnAddProduct">Tambah Produk Baru</button>
+            <button id="btnClearProducts">Hapus Semua</button>
+        </div>
+
+        <div id="delegationLog" class="delegation-log">Klik tombol Beli atau Hapus pada produk...</div>
+    </div>
+    <script>
+        var productList = document.getElementById('productList');
+        var log = document.getElementById('delegationLog');
+        var nextId = 4;
+
+        productList.addEventListener('click', function (e) {
+            var target = e.target;
+
+            if (target.classList.contains('btn-buy')) {
+                var item = target.closest('.product-item');
+                var name = item.querySelector('.product-name').textContent;
+                var price = item.querySelector('.product-price').textContent;
+                log.textContent = 'Membeli: ' + name + ' seharga ' + price;
+            }
+
+            else if (target.classList.contains('btn-delete-item')) {
+                var item = target.closest('.product-item');
+                var name = item.querySelector('.product-name').textContent;
+                item.remove();
+                log.textContent = name + ' dihapus dari daftar';
+            }
+
+            else if (target.classList.contains('product-item') || target.closest('.product-item')) {
+                var item = target.closest('.product-item');
+                var id = item.getAttribute('data-id');
+                var name = item.querySelector('.product-name').textContent;
+                log.textContent = 'Item diklik: ' + name + ' (ID: ' + id + ')';
+            }
+        });
+
+        document.getElementById('btnAddProduct').addEventListener('click', function () {
+            var products = [
+                { name: 'Monitor', price: 'Rp15.000' },
+                { name: 'Printer', price: 'Rp20.000' },
+                { name: 'Webcam', price: 'Rp8.000' }
+            ];
+            var p = products[nextId % products.length];
+            var li = document.createElement('li');
+            li.className = 'product-item';
+            li.setAttribute('data-id', nextId);
+            li.setAttribute('data-price', nextId * 1000);
+            li.innerHTML = '<span class="product-name">' + p.name + ' (baru)</span>' +
+                '<span class="product-price">' + p.price + '</span>' +
+                '<button class="btn-buy">Beli</button>' +
+                '<button class="btn-delete-item">Hapus</button>';
+            productList.appendChild(li);
+            log.textContent = 'Produk baru ditambahkan: ' + p.name;
+            nextId++;
+        });
+
+        document.getElementById('btnClearProducts').addEventListener('click', function () {
+            productList.innerHTML = '';
+            log.textContent = 'Semua produk dihapus. Tambah produk baru untuk demo delegasi.';
+        });
+    </script>
+</body>
+
+</html>

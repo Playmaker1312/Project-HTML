@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Await Fetch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .async-demo {
+            max-width: 550px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .async-controls {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .async-controls button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .async-controls button:hover {
+            background: #2980b9;
+        }
+
+        .loading-bar {
+            display: none;
+            padding: 12px;
+            background: #fff3cd;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .async-result {
+            background: #f8f9fa;
+            padding: 16px;
+            border-radius: 8px;
+        }
+
+        #asyncOutput {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            min-height: 80px;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+
+        .async-log {
+            margin-top: 16px;
+            padding: 12px;
+            background: #f0f8ff;
+            border-radius: 8px;
+            font-size: 13px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="async-demo">
+        <h1>Async/Await dengan Fetch</h1>
+
+        <div class="async-controls">
+            <button id="btnSingle">Ambil 1 Todo</button>
+            <button id="btnMultiple">Ambil 5 Todo (parallel)</button>
+            <button id="btnSequential">Ambil User + Posts (sequential)</button>
+            <button id="btnError">Contoh Error Handling</button>
+        </div>
+
+        <div class="loading-bar" id="asyncLoading">Memuat...</div>
+
+        <div class="async-result">
+            <pre id="asyncOutput">Klik tombol untuk memulai...</pre>
+        </div>
+
+        <div id="asyncLog" class="async-log">Status: Menunggu aksi</div>
+    </div>
+    <script>
+        var output = document.getElementById('asyncOutput');
+        var loading = document.getElementById('asyncLoading');
+        var log = document.getElementById('asyncLog');
+        var API = 'https://jsonplaceholder.typicode.com';
+
+        function showLoading(show) {
+            loading.style.display = show ? 'block' : 'none';
+        }
+
+        function setLog(msg) {
+            log.textContent = 'Status: ' + msg;
+        }
+
+        async function fetchJson(url) {
+            var response = await fetch(url);
+            if (!response.ok) {
+                throw new Error('HTTP Error: ' + response.status);
+            }
+            return await response.json();
+        }
+
+        document.getElementById('btnSingle').addEventListener('click', async function () {
+            try {
+                showLoading(true);
+                setLog('Mengambil 1 todo...');
+                var todo = await fetchJson(API + '/todos/1');
+                output.textContent = JSON.stringify(todo, null, 2);
+                setLog('Sukses: Todo ' + todo.id + ' - ' + todo.title);
+            } catch (err) {
+                output.textContent = 'Error: ' + err.message;
+                setLog('Error: ' + err.message);
+            } finally {
+                showLoading(false);
+            }
+        });
+
+        document.getElementById('btnMultiple').addEventListener('click', async function () {
+            try {
+                showLoading(true);
+                setLog('Mengambil 5 todo secara parallel...');
+                var urls = [];
+                for (var i = 1; i <= 5; i++) {
+                    urls.push(fetchJson(API + '/todos/' + i));
+                }
+                var results = await Promise.all(urls);
+                var text = 'Mengambil ' + results.length + ' todo secara PARALLEL:\n\n';
+                for (var i = 0; i < results.length; i++) {
+                    text += (i + 1) + '. ' + results[i].title + '\n';
+                }
+                output.textContent = text;
+                setLog('Sukses: ' + results.length + ' todo dimuat dalam satu waktu');
+            } catch (err) {
+                output.textContent = 'Error: ' + err.message;
+                setLog('Error: ' + err.message);
+            } finally {
+                showLoading(false);
+            }
+        });
+
+        document.getElementById('btnSequential').addEventListener('click', async function () {
+            try {
+                showLoading(true);
+                setLog('Mengambil user, lalu posts-nya...');
+
+                var user = await fetchJson(API + '/users/1');
+                var posts = await fetchJson(API + '/posts?userId=1');
+
+                var result = 'User: ' + user.name + ' (' + user.email + ')\n';
+                result += 'Jumlah posts: ' + posts.length + '\n\n';
+                for (var i = 0; i < Math.min(3, posts.length); i++) {
+                    result += (i + 1) + '. ' + posts[i].title + '\n';
+                }
+                if (posts.length > 3) {
+                    result += '... dan ' + (posts.length - 3) + ' posts lainnya\n';
+                }
+
+                output.textContent = result;
+                setLog('Sukses: Data user dan ' + posts.length + ' posts dimuat secara sequential');
+            } catch (err) {
+                output.textContent = 'Error: ' + err.message;
+                setLog('Error: ' + err.message);
+            } finally {
+                showLoading(false);
+            }
+        });
+
+        document.getElementById('btnError').addEventListener('click', async function () {
+            try {
+                showLoading(true);
+                setLog('Mencoba endpoint yang salah...');
+                var data = await fetchJson(API + '/nonexistent');
+                output.textContent = JSON.stringify(data, null, 2);
+            } catch (err) {
+                output.textContent = 'Error tertangkap try/catch:\n' + err.message;
+                setLog('Error handling sukses: ' + err.message);
+            } finally {
+                showLoading(false);
+            }
+        });
+    </script>
+</body>
+
+</html>
