@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe Landing Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            background: #f0f0f0;
+            padding: 20px;
+        }
+
+        .wireframe {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .section {
+            border: 2px dashed #999;
+            padding: 30px;
+            margin: 20px 0;
+            text-align: center;
+            color: #666;
+            font-size: 18px;
+            background: #fafafa;
+            border-radius: 4px;
+        }
+
+        .section h2 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .flex {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            border: 1px dashed #bbb;
+            padding: 40px 20px;
+            flex: 1;
+            min-width: 150px;
+            background: #f5f5f5;
+            border-radius: 4px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 20px;
+            border: 2px dashed #999;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 30px;
+            background: #ddd;
+        }
+
+        .menu {
+            display: flex;
+            gap: 15px;
+        }
+
+        .menu span {
+            width: 60px;
+            height: 15px;
+            background: #ddd;
+        }
+
+        .hero {
+            padding: 80px 20px;
+        }
+
+        .hero h1 {
+            width: 60%;
+            height: 30px;
+            background: #ddd;
+            margin: 0 auto 15px;
+        }
+
+        .hero p {
+            width: 40%;
+            height: 15px;
+            background: #eee;
+            margin: 0 auto 25px;
+        }
+
+        .hero .btn {
+            width: 120px;
+            height: 40px;
+            background: #ccc;
+            margin: 0 auto;
+            border-radius: 20px;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 40px 20px;
+            border: 2px dashed #999;
+            border-radius: 4px;
+        }
+
+        .footer-col {
+            width: 30%;
+            height: 80px;
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wireframe">
+        <h1 style="text-align:center;margin-bottom:10px;font-size:12px;color:#999;">WIREFRAME LANDING PAGE</h1>
+        <div class="navbar">
+            <div class="logo"></div>
+            <div class="menu"><span></span><span></span><span></span></div>
+        </div>
+        <div class="section hero">
+            <h2>HERO SECTION</h2>
+            <h1></h1>
+            <p></p>
+            <div class="btn"></div>
+        </div>
+        <div class="section features">
+            <h2>FEATURES / LAYANAN</h2>
+            <div class="flex">
+                <div class="box">Feature 1</div>
+                <div class="box">Feature 2</div>
+                <div class="box">Feature 3</div>
+            </div>
+        </div>
+        <div class="section about">
+            <h2>ABOUT US</h2>
+            <div class="flex">
+                <div class="box" style="flex:1;">Teks</div>
+                <div class="box" style="flex:1;">Gambar</div>
+            </div>
+        </div>
+        <div class="section testimonial">
+            <h2>TESTIMONIAL</h2>
+            <div class="flex">
+                <div class="box">Testimonial 1</div>
+                <div class="box">Testimonial 2</div>
+            </div>
+        </div>
+        <div class="section pricing">
+            <h2>PRICING TABLE</h2>
+            <div class="flex">
+                <div class="box">Paket 1</div>
+                <div class="box">Paket 2</div>
+                <div class="box">Paket 3</div>
+            </div>
+        </div>
+        <div class="section faq">
+            <h2>FAQ</h2>
+            <div class="box" style="margin-bottom:10px;">Pertanyaan 1</div>
+            <div class="box">Pertanyaan 2</div>
+        </div>
+        <div class="section contact">
+            <h2>CONTACT FORM</h2>
+            <div class="box" style="max-width:500px;margin:0 auto;">Form</div>
+        </div>
+        <div class="footer">
+            <div class="footer-col"></div>
+            <div class="footer-col"></div>
+            <div class="footer-col"></div>
+        </div>
+    </div>
+</body>
+
+</html>

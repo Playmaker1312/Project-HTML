@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lazy Loading</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            padding: 40px;
+            background: #f8fafc;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #0f172a;
+            font-size: 2rem;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .image-card {
+            background: #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            background: #e2e8f0;
+            transition: opacity 0.3s;
+        }
+
+        .image-card img.loading {
+            opacity: 0;
+        }
+
+        .image-card img.loaded {
+            opacity: 1;
+        }
+
+        .image-card .placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            background: #e2e8f0;
+        }
+
+        .info {
+            max-width: 800px;
+            margin: 40px auto 0;
+            padding: 24px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .info h3 {
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .info p {
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .image-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Lazy Loading Images</h1>
+    <div class="image-grid">
+        <div class="image-card">
+            <div class="placeholder">Memuat...</div>
+            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop" alt="Nature"
+                loading="lazy" width="400" height="300"
+                onload="this.classList.add('loaded'); this.previousElementSibling.style.display='none';"
+                class="loading">
+        </div>
+        <div class="image-card">
+            <div class="placeholder">Memuat...</div>
+            <img src="https://images.unsplash.com/photo-1470071459604-7b8ec44ffd4a?w=400&h=300&fit=crop" alt="Forest"
+                loading="lazy" width="400" height="300"
+                onload="this.classList.add('loaded'); this.previousElementSibling.style.display='none';"
+                class="loading">
+        </div>
+        <div class="image-card">
+            <div class="placeholder">Memuat...</div>
+            <img src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=400&h=300&fit=crop" alt="Lake"
+                loading="lazy" width="400" height="300"
+                onload="this.classList.add('loaded'); this.previousElementSibling.style.display='none';"
+                class="loading">
+        </div>
+        <div class="image-card">
+            <div class="placeholder">Memuat...</div>
+            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=300&fit=crop" alt="Mountain"
+                loading="lazy" width="400" height="300"
+                onload="this.classList.add('loaded'); this.previousElementSibling.style.display='none';"
+                class="loading">
+        </div>
+        <div class="image-card">
+            <div class="placeholder">Memuat...</div>
+            <img src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?w=400&h=300&fit=crop" alt="City"
+                loading="lazy" width="400" height="300"
+                onload="this.classList.add('loaded'); this.previousElementSibling.style.display='none';"
+                class="loading">
+        </div>
+        <div class="image-card">
+            <div class="placeholder">Memuat...</div>
+            <img src="https://images.unsplash.com/photo-1440588582818-1ba1b481b63a?w=400&h=300&fit=crop"
+                alt="Architecture" loading="lazy" width="400" height="300"
+                onload="this.classList.add('loaded'); this.previousElementSibling.style.display='none';"
+                class="loading">
+        </div>
+    </div>
+    <div class="info">
+        <h3>Cara Kerja Lazy Loading</h3>
+        <p>Gambar dengan atribut <code>loading="lazy"</code> hanya akan dimuat ketika mendekati viewport pengguna. Hal
+            ini mengurangi jumlah data yang diunduh saat halaman pertama kali dibuka, meningkatkan kecepatan loading dan
+            menghemat bandwidth.</p>
+        <p>Check browser DevTools > Network tab untuk melihat bahwa gambar dimuat secara bertahap saat Anda scroll.</p>
+    </div>
+    <script>
+        if ('loading' in HTMLImageElement.prototype) {
+            console.log('Lazy loading didukung browser ini');
+        } else {
+            const imgs = document.querySelectorAll('img[loading="lazy"]');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src || img.src;
+                        observer.unobserve(img);
+                    }
+                });
+            });
+            imgs.forEach(img => observer.observe(img));
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Grid - Category Badge</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0f2f5;
+            padding: 60px 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 28px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-image-wrap {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image-wrap img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 1;
+        }
+
+        .badge-web {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .badge-mobile {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+        }
+
+        .badge-dash {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+        }
+
+        .badge-brand {
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+            color: #1a5c3a;
+        }
+
+        .card-body {
+            padding: 24px;
+        }
+
+        .card-body h3 {
+            font-size: 18px;
+            color: #2d3436;
+            margin-bottom: 6px;
+        }
+
+        .card-body p {
+            font-size: 14px;
+            color: #636e72;
+            line-height: 1.6;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 32px;
+            color: #2d3436;
+            margin-bottom: 36px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Category Badge</h2>
+    <div class="grid">
+        <div class="card">
+            <div class="card-image-wrap">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80" alt="">
+                <span class="badge badge-web">Web Design</span>
+            </div>
+            <div class="card-body">
+                <h3>Company Profile</h3>
+                <p>Website company profile modern dengan desain responsif.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-image-wrap">
+                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&q=80" alt="">
+                <span class="badge badge-mobile">Mobile App</span>
+            </div>
+            <div class="card-body">
+                <h3>E-commerce App</h3>
+                <p>Aplikasi belanja online dengan fitur lengkap.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-image-wrap">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80" alt="">
+                <span class="badge badge-dash">Dashboard</span>
+            </div>
+            <div class="card-body">
+                <h3>Analytics Platform</h3>
+                <p>Dashboard data real-time interaktif.</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-image-wrap">
+                <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&q=80" alt="">
+                <span class="badge badge-brand">Branding</span>
+            </div>
+            <div class="card-body">
+                <h3>Brand Identity</h3>
+                <p>Identitas merek yang kuat dan konsisten.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

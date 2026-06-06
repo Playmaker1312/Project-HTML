@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Grid - Hover Scale</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0f2f5;
+            padding: 60px 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.08);
+        }
+
+        .card-body {
+            padding: 24px;
+        }
+
+        .card-body h3 {
+            font-size: 20px;
+            color: #2d3436;
+            margin-bottom: 8px;
+        }
+
+        .card-body p {
+            font-size: 14px;
+            color: #636e72;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .card-body .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .card-body .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 32px;
+            color: #2d3436;
+            margin-bottom: 36px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Hover Effect - Scale Up</h2>
+    <div class="grid">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80" alt="">
+            <div class="card-body">
+                <h3>Web Design</h3>
+                <p>Desain website modern dan responsif untuk berbagai kebutuhan bisnis.</p><a href="#"
+                    class="btn">Lihat</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&q=80" alt="">
+            <div class="card-body">
+                <h3>Mobile App</h3>
+                <p>Aplikasi mobile dengan performa tinggi dan UI yang intuitif.</p><a href="#" class="btn">Lihat</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80" alt="">
+            <div class="card-body">
+                <h3>Dashboard</h3>
+                <p>Dashboard analitik dengan visualisasi data interaktif.</p><a href="#" class="btn">Lihat</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

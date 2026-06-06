@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Grid - Auto-fill Grid</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f8f9fa;
+            padding: 40px 20px;
+        }
+
+        .gallery {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery h2 {
+            text-align: center;
+            font-size: 32px;
+            color: #2d3436;
+            margin-bottom: 32px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-body h3 {
+            font-size: 18px;
+            color: #2d3436;
+            margin-bottom: 6px;
+        }
+
+        .card-body p {
+            font-size: 14px;
+            color: #636e72;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="gallery">
+        <h2>Responsive Grid Gallery</h2>
+        <div class="grid">
+            <div class="card"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80" alt="">
+                <div class="card-body">
+                    <h3>Project Alpha</h3>
+                    <p>Desain website modern untuk startup teknologi.</p>
+                </div>
+            </div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&q=80" alt="">
+                <div class="card-body">
+                    <h3>Project Beta</h3>
+                    <p>Aplikasi mobile dengan fitur real-time.</p>
+                </div>
+            </div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80" alt="">
+                <div class="card-body">
+                    <h3>Project Gamma</h3>
+                    <p>Dashboard analitik data interaktif.</p>
+                </div>
+            </div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=400&q=80" alt="">
+                <div class="card-body">
+                    <h3>Project Delta</h3>
+                    <p>Sistem manajemen konten enterprise.</p>
+                </div>
+            </div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&q=80" alt="">
+                <div class="card-body">
+                    <h3>Project Epsilon</h3>
+                    <p>Platform e-learning dengan video streaming.</p>
+                </div>
+            </div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&q=80" alt="">
+                <div class="card-body">
+                    <h3>Project Zeta</h3>
+                    <p>Website company profile interaktif.</p>
+                </div>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 24px; color: #636e72;">Resize browser untuk melihat grid berubah
+            jumlah kolom secara otomatis</p>
+    </section>
+</body>
+
+</html>

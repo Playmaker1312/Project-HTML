@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Grid - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            background: #f0f2f5;
+            padding: 40px;
+        }
+
+        .grid-wire {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card-wire {
+            background: #e0e0e0;
+            border-radius: 12px;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .card-image-wire {
+            height: 180px;
+            background: #ccc;
+        }
+
+        .card-body-wire {
+            padding: 20px;
+        }
+
+        .card-title-wire {
+            height: 20px;
+            width: 70%;
+            background: #ccc;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+
+        .card-desc-wire {
+            height: 14px;
+            width: 100%;
+            background: #ccc;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        .card-desc-wire:last-child {
+            width: 60%;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 32px;
+            color: #2d3436;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Wireframe Card Grid Gallery</h2>
+    <div class="grid-wire">
+        <div class="card-wire">
+            <div class="card-image-wire"></div>
+            <div class="card-body-wire">
+                <div class="card-title-wire"></div>
+                <div class="card-desc-wire"></div>
+                <div class="card-desc-wire"></div>
+            </div>
+        </div>
+        <div class="card-wire">
+            <div class="card-image-wire"></div>
+            <div class="card-body-wire">
+                <div class="card-title-wire"></div>
+                <div class="card-desc-wire"></div>
+                <div class="card-desc-wire"></div>
+            </div>
+        </div>
+        <div class="card-wire">
+            <div class="card-image-wire"></div>
+            <div class="card-body-wire">
+                <div class="card-title-wire"></div>
+                <div class="card-desc-wire"></div>
+                <div class="card-desc-wire"></div>
+            </div>
+        </div>
+        <div class="card-wire">
+            <div class="card-image-wire"></div>
+            <div class="card-body-wire">
+                <div class="card-title-wire"></div>
+                <div class="card-desc-wire"></div>
+                <div class="card-desc-wire"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

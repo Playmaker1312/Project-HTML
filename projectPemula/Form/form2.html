@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form - HTML Aksesibel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 520px;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #2d3436;
+            margin-bottom: 8px;
+            font-size: 28px;
+        }
+
+        .form-container>p {
+            text-align: center;
+            color: #636e72;
+            margin-bottom: 28px;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #2d3436;
+        }
+
+        label .required {
+            color: #e74c3c;
+            margin-left: 2px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+            background: #fafafa;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Hubungi Kami</h2>
+        <p>Silakan isi form di bawah untuk menghubungi tim kami</p>
+        <form id="contactForm" novalidate>
+            <div class="form-group">
+                <label for="name">Nama Lengkap <span class="required">*</span></label>
+                <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Alamat Email <span class="required">*</span></label>
+                <input type="email" id="email" name="email" placeholder="contoh@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">Subjek <span class="required">*</span></label>
+                <input type="text" id="subject" name="subject" placeholder="Masukkan subjek pesan" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Pesan <span class="required">*</span></label>
+                <textarea id="message" name="message" placeholder="Tulis pesan Anda di sini..." required></textarea>
+            </div>
+            <button type="submit">Kirim Pesan</button>
+        </form>
+    </div>
+</body>
+
+</html>

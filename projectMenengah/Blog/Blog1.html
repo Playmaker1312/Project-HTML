@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Structure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 32px;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .blog-card .thumb {
+            height: 200px;
+            background: #e2e8f0;
+        }
+
+        .blog-card .body {
+            padding: 20px;
+        }
+
+        .blog-card .category {
+            display: inline-block;
+            background: #eff6ff;
+            color: #2563eb;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+        }
+
+        .blog-card h3 {
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .blog-card .date {
+            color: #64748b;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+
+        .blog-card p {
+            color: #475569;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .detail-view {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .detail-view .back {
+            display: inline-block;
+            margin-bottom: 24px;
+            color: #2563eb;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .detail-view .back:hover {
+            text-decoration: underline;
+        }
+
+        .detail-view .featured-img {
+            width: 100%;
+            height: 400px;
+            background: #e2e8f0;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+
+        .detail-view h2 {
+            font-size: 1.75rem;
+            margin-bottom: 12px;
+        }
+
+        .detail-view .meta {
+            color: #64748b;
+            margin-bottom: 24px;
+        }
+
+        .detail-view .content {
+            line-height: 1.8;
+            color: #334155;
+        }
+
+        @media (max-width: 640px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="app">
+        <h1>Blog Saya</h1>
+        <div id="blogIndex" class="blog-grid">
+            <div class="blog-card" onclick="showDetail(1)">
+                <div class="thumb"></div>
+                <div class="body"><span class="category">Teknologi</span>
+                    <h3>Judul Artikel Pertama</h3>
+                    <div class="date">28 Mei 2026</div>
+                    <p>Cuplikan singkat dari artikel pertama yang menarik untuk dibaca.</p>
+                </div>
+            </div>
+            <div class="blog-card" onclick="showDetail(2)">
+                <div class="thumb"></div>
+                <div class="body"><span class="category">Desain</span>
+                    <h3>Panduan Desain untuk Pemula</h3>
+                    <div class="date">25 Mei 2026</div>
+                    <p>Tips dan trik desain untuk memulai karir sebagai desainer web.</p>
+                </div>
+            </div>
+            <div class="blog-card" onclick="showDetail(3)">
+                <div class="thumb"></div>
+                <div class="body"><span class="category">Programming</span>
+                    <h3>Dasar JavaScript Modern</h3>
+                    <div class="date">20 Mei 2026</div>
+                    <p>Pelajari konsep-konsep penting JavaScript untuk web development.</p>
+                </div>
+            </div>
+        </div>
+        <div id="detailView" class="detail-view">
+            <a class="back" onclick="showIndex()">← Kembali ke Index</a>
+            <div class="featured-img"></div>
+            <h2 id="detailTitle">Judul</h2>
+            <div class="meta" id="detailMeta">Kategori • Tanggal</div>
+            <div class="content" id="detailContent">
+                <p>Konten artikel lengkap akan ditampilkan di sini...</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showDetail(id) {
+            document.getElementById('blogIndex').style.display = 'none';
+            document.getElementById('detailView').style.display = 'block';
+            document.getElementById('detailTitle').textContent = 'Artikel #' + id;
+        }
+        function showIndex() {
+            document.getElementById('blogIndex').style.display = 'grid';
+            document.getElementById('detailView').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

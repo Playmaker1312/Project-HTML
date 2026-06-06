@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar - Sticky Position</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .top-banner {
+            background: #667eea;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-size: 14px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 40px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: #2d3436;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #667eea;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        .nav-menu a {
+            color: #636e72;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.8;
+        }
+
+        .content {
+            padding: 60px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .content p {
+            margin-bottom: 24px;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #636e72;
+        }
+
+        .sticky-demo {
+            background: #f8f9fa;
+            border: 2px dashed #667eea;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 40px 0;
+        }
+
+        .sticky-demo h3 {
+            color: #2d3436;
+            margin-bottom: 8px;
+        }
+
+        .sticky-demo p {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-banner">Free shipping for all orders over $50!</div>
+    <nav class="navbar">
+        <a href="#" class="logo">My<span>Brand</span></a>
+        <ul class="nav-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <section class="hero">
+        <h1>Sticky Navigation</h1>
+        <p>Navbar akan menempel di atas saat scroll melewatinya.</p>
+    </section>
+    <section class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat.</p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident.</p>
+        <div class="sticky-demo">
+            <h3>Bagaimana Cara Kerja Sticky?</h3>
+            <p>Perhatikan bahwa banner biru di atas navbar ikut scroll ke atas, tetapi navbar tetap menempel di top: 0.
+                Ini karena navbar menggunakan <code>position: sticky</code> yang mulai aktif saat scroll mencapai
+                posisinya.</p>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur.</p>
+    </section>
+</body>
+
+</html>

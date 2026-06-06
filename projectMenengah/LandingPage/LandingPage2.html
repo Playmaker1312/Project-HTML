@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struktur Landing Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .wireframe {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .wf-header {
+            background: #e0e0e0;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .wf-header .logo {
+            width: 120px;
+            height: 30px;
+            background: #ccc;
+            border-radius: 4px;
+        }
+
+        .wf-header .nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .wf-header .nav span {
+            width: 60px;
+            height: 12px;
+            background: #ccc;
+            border-radius: 4px;
+            display: block;
+        }
+
+        .wf-hero {
+            background: #e8e8e8;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .wf-hero h1 {
+            width: 400px;
+            height: 36px;
+            background: #ccc;
+            margin: 0 auto 20px;
+            border-radius: 4px;
+        }
+
+        .wf-hero p {
+            width: 600px;
+            height: 16px;
+            background: #d0d0d0;
+            margin: 0 auto;
+            border-radius: 4px;
+        }
+
+        .wf-section {
+            padding: 60px 40px;
+            border-bottom: 2px dashed #ddd;
+        }
+
+        .wf-section h2 {
+            width: 200px;
+            height: 28px;
+            background: #ccc;
+            margin: 0 auto 40px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .wf-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .wf-card {
+            background: #e8e8e8;
+            padding: 40px 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .wf-card .icon {
+            width: 48px;
+            height: 48px;
+            background: #ccc;
+            margin: 0 auto 16px;
+            border-radius: 50%;
+        }
+
+        .wf-card .title {
+            width: 120px;
+            height: 14px;
+            background: #ccc;
+            margin: 0 auto 8px;
+            border-radius: 4px;
+        }
+
+        .wf-card .desc {
+            width: 100%;
+            height: 10px;
+            background: #d0d0d0;
+            margin: 0 auto;
+            border-radius: 4px;
+        }
+
+        .wf-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .wf-row .text-block {
+            height: 120px;
+            background: #e8e8e8;
+            border-radius: 8px;
+        }
+
+        .wf-row .img-block {
+            height: 200px;
+            background: #e0e0e0;
+            border-radius: 8px;
+        }
+
+        .wf-pricing {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .wf-price-card {
+            background: #e8e8e8;
+            padding: 40px 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .wf-price-card .price {
+            width: 100px;
+            height: 32px;
+            background: #ccc;
+            margin: 0 auto 16px;
+            border-radius: 4px;
+        }
+
+        .wf-price-card .btn {
+            width: 140px;
+            height: 40px;
+            background: #bbb;
+            margin: 20px auto 0;
+            border-radius: 20px;
+        }
+
+        .wf-footer {
+            background: #e0e0e0;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .wf-footer .col {
+            height: 80px;
+            background: #ccc;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+
+            .wf-grid,
+            .wf-pricing,
+            .wf-row,
+            .wf-footer {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wireframe">
+        <header class="wf-header">
+            <div class="logo"></div>
+            <div class="nav"><span></span><span></span><span></span></div>
+        </header>
+        <section class="wf-hero">
+            <h1></h1>
+            <p></p>
+            <p></p>
+        </section>
+        <section class="wf-section">
+            <h2></h2>
+            <div class="wf-grid">
+                <div class="wf-card">
+                    <div class="icon"></div>
+                    <div class="title"></div>
+                    <div class="desc"></div>
+                </div>
+                <div class="wf-card">
+                    <div class="icon"></div>
+                    <div class="title"></div>
+                    <div class="desc"></div>
+                </div>
+                <div class="wf-card">
+                    <div class="icon"></div>
+                    <div class="title"></div>
+                    <div class="desc"></div>
+                </div>
+            </div>
+        </section>
+        <section class="wf-section">
+            <h2></h2>
+            <div class="wf-row">
+                <div class="text-block"></div>
+                <div class="img-block"></div>
+            </div>
+        </section>
+        <section class="wf-section">
+            <h2></h2>
+            <div class="wf-pricing">
+                <div class="wf-price-card">
+                    <div class="price"></div>
+                    <div class="desc"></div>
+                    <div class="btn"></div>
+                </div>
+                <div class="wf-price-card">
+                    <div class="price"></div>
+                    <div class="desc"></div>
+                    <div class="btn"></div>
+                </div>
+                <div class="wf-price-card">
+                    <div class="price"></div>
+                    <div class="desc"></div>
+                    <div class="btn"></div>
+                </div>
+            </div>
+        </section>
+        <footer class="wf-footer">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+        </footer>
+    </div>
+</body>
+
+</html>

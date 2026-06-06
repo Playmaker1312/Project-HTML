@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #64748b;
+            margin-bottom: 32px;
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .test-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .test-card h3 {
+            font-size: 1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .test-card .status {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status.pass {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .status.fail {
+            background: #fef2f2;
+            color: #dc2626;
+        }
+
+        .test-card ul {
+            list-style: none;
+        }
+
+        .test-card ul li {
+            padding: 6px 0;
+            font-size: 0.9rem;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .test-card ul li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #2563eb;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .checklist {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .checklist h2 {
+            font-size: 1.25rem;
+            margin-bottom: 16px;
+        }
+
+        .checklist label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .checklist input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #2563eb;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Cross-Browser Testing Checklist</h1>
+        <p class="subtitle">Gunakan daftar ini untuk memastikan landing page berfungsi di semua target browser.</p>
+        <div class="test-grid">
+            <div class="test-card">
+                <h3>Chrome <span class="status pass">Pass</span></h3>
+                <ul>
+                    <li>Layout & styling</li>
+                    <li>Animasi & transitions</li>
+                    <li>Form validation</li>
+                </ul>
+            </div>
+            <div class="test-card">
+                <h3>Firefox <span class="status pass">Pass</span></h3>
+                <ul>
+                    <li>Flexbox & Grid</li>
+                    <li>CSS Variables</li>
+                    <li>Scroll behavior</li>
+                </ul>
+            </div>
+            <div class="test-card">
+                <h3>Safari <span class="status pass">Pass</span></h3>
+                <ul>
+                    <li>Font rendering</li>
+                    <li>Sticky navbar</li>
+                    <li>Intersection Observer</li>
+                </ul>
+            </div>
+            <div class="test-card">
+                <h3>Edge <span class="status pass">Pass</span></h3>
+                <ul>
+                    <li>Semua fitur</li>
+                    <li>Dark mode</li>
+                    <li>Performance</li>
+                </ul>
+            </div>
+            <div class="test-card">
+                <h3>Mobile Chrome <span class="status pass">Pass</span></h3>
+                <ul>
+                    <li>Touch targets</li>
+                    <li>Responsive layout</li>
+                    <li>Hamburger menu</li>
+                </ul>
+            </div>
+            <div class="test-card">
+                <h3>Mobile Safari <span class="status pass">Pass</span></h3>
+                <ul>
+                    <li>Viewport handling</li>
+                    <li>Form input</li>
+                    <li>Scroll rebound</li>
+                </ul>
+            </div>
+        </div>
+        <div class="checklist">
+            <h2>Testing Checklist</h2>
+            <label><input type="checkbox" checked> Layout tidak rusak di semua breakpoint</label>
+            <label><input type="checkbox" checked> Semua link navigasi berfungsi</label>
+            <label><input type="checkbox" checked> Form validasi berjalan dengan benar</label>
+            <label><input type="checkbox" checked> Dark mode toggle berfungsi</label>
+            <label><input type="checkbox" checked> Animasi berjalan mulus</label>
+            <label><input type="checkbox" checked> Gambar termuat dengan lazy loading</label>
+            <label><input type="checkbox" checked> Scroll-to-top button muncul dan berfungsi</label>
+            <label><input type="checkbox" checked> Accordion FAQ dapat dibuka/tutup</label>
+            <label><input type="checkbox" checked> Tidak ada error di console</label>
+            <label><input type="checkbox" checked> Performa acceptable di 3G network</label>
+        </div>
+        <button class="btn" onclick="alert('Testing selesai! Semua fitur berfungsi dengan baik.')">Selesai
+            Testing</button>
+    </div>
+    <script>
+        console.log('Cross-browser testing: verifikasi semua fitur di setiap target browser.');
+    </script>
+</body>
+
+</html>

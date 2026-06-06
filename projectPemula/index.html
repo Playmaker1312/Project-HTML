@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Continuous Learning in Web Dev</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            padding: 2rem;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+        }
+
+        .card {
+            border: 2px solid #eee;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .card h2 {
+            margin-bottom: 0.75rem;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .resource-card {
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 2px solid #e9ecef;
+        }
+
+        .resource-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .resource-card p {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        .resource-card .link {
+            color: #1a73e8;
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+
+        .roadmap {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .roadmap-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.5rem;
+        }
+
+        .roadmap-level {
+            width: 80px;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .beginner {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .intermediate {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .advanced {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .mastery {
+            background: #e3f2fd;
+            color: #1a73e8;
+        }
+
+        pre {
+            background: #f5f5f5;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            background: #1a73e8;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .learning-path {
+            border-left: 4px solid #1a73e8;
+            padding-left: 1rem;
+            margin: 1rem 0;
+        }
+
+        .learning-path li {
+            margin: 0.5rem 0;
+        }
+
+        .tip {
+            background: #e3f2fd;
+            border: 1px solid #1a73e8;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Continuous Learning</h1>
+
+    <div class="tip">
+        <strong>Tips:</strong> Fokus pada fundamental (HTML, CSS, JavaScript) sebelum framework. Fundamental jarang
+        berubah, framework sering berganti.
+    </div>
+
+    <div class="card">
+        <h2>Learning Roadmap</h2>
+        <div class="roadmap">
+            <div class="roadmap-item">
+                <span class="roadmap-level beginner">Beginner</span>
+                <span>HTML5 semantic, CSS dasar, JavaScript dasar, Git</span>
+            </div>
+            <div class="roadmap-item">
+                <span class="roadmap-level intermediate">Intermediate</span>
+                <span>CSS Flexbox/Grid, JavaScript DOM/Async, Responsive, REST API</span>
+            </div>
+            <div class="roadmap-item">
+                <span class="roadmap-level advanced">Advanced</span>
+                <span>Performance, Accessibility, Testing, Bundler, CI/CD</span>
+            </div>
+            <div class="roadmap-item">
+                <span class="roadmap-level mastery">Mastery</span>
+                <span>Architecture, Security, Open Source, Mentoring</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Sumber Belajar Terpercaya</h2>
+        <div class="resource-grid">
+            <div class="resource-card">
+                <h3>MDN Web Docs</h3>
+                <p>Dokumentasi resmi web development</p>
+                <a class="link" href="https://developer.mozilla.org">developer.mozilla.org</a>
+            </div>
+            <div class="resource-card">
+                <h3>web.dev</h3>
+                <p>Panduan performa dan best practices dari Google</p>
+                <a class="link" href="https://web.dev">web.dev</a>
+            </div>
+            <div class="resource-card">
+                <h3>CSS-Tricks</h3>
+                <p>Artikel dan panduan CSS lengkap</p>
+                <a class="link" href="https://css-tricks.com">css-tricks.com</a>
+            </div>
+            <div class="resource-card">
+                <h3>JavaScript.info</h3>
+                <p>Tutorial JavaScript modern dari dasar</p>
+                <a class="link" href="https://javascript.info">javascript.info</a>
+            </div>
+            <div class="resource-card">
+                <h3>Frontend Masters</h3>
+                <p>Course mendalam dari expert</p>
+                <a class="link" href="https://frontendmasters.com">frontendmasters.com</a>
+            </div>
+            <div class="resource-card">
+                <h3>freeCodeCamp</h3>
+                <p>Kurikulum web development gratis</p>
+                <a class="link" href="https://freecodecamp.org">freecodecamp.org</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Strategi Belajar Efektif</h2>
+        <ol class="learning-path">
+            <li><strong>Build projects:</strong> Teori hanya 20%, praktik 80%</li>
+            <li><strong>Code every day:</strong> Konsistensi lebih penting dari durasi</li>
+            <li><strong>Read others' code:</strong> Buka source code project open source</li>
+            <li><strong>Teach others:</strong> Menulis blog atau membantu di forum</li>
+            <li><strong>Follow experts:</strong> Ikuti developer senior di Twitter/GitHub</li>
+            <li><strong>Attend events:</strong> Meetup, conference, hackathon</li>
+            <li><strong>Contribute to open source:</strong> Mulai dari dokumentasi atau fix kecil</li>
+        </ol>
+    </div>
+
+    <div class="card">
+        <h2>Learning Tracker</h2>
+        <p>Track progress belajar Anda:</p>
+        <ul id="trackerList">
+            <li><input type="checkbox"> Complete HTML/CSS fundamentals</li>
+            <li><input type="checkbox"> Build 5 static websites</li>
+            <li><input type="checkbox"> Master JavaScript (DOM, Async, Fetch)</li>
+            <li><input type="checkbox"> Learn Git and GitHub</li>
+            <li><input type="checkbox"> Build portfolio website</li>
+            <li><input type="checkbox"> Learn testing (Playwright)</li>
+            <li><input type="checkbox"> Learn performance optimization</li>
+            <li><input type="checkbox"> Contribute to open source</li>
+        </ul>
+        <button id="resetTracker" style="margin-top: 1rem;">Reset Progress</button>
+    </div>
+
+    <script>
+        document.getElementById('resetTracker').addEventListener('click', () => {
+            document.querySelectorAll('#trackerList input[type="checkbox"]').forEach(cb => cb.checked = false);
+        });
+
+        const tips = [
+            'Baca dokumentasi, bukan cuma tutorial copy-paste',
+            'Debugging skill adalah yang paling penting',
+            'Jangan bandingkan dirimu dengan senior — fokus pada progress sendiri',
+            'Istirahat! Otak perlu waktu untuk memproses informasi',
+            'Build something every day, even if small'
+        ];
+
+        function getDailyTip() {
+            return tips[Math.floor(Math.random() * tips.length)];
+        }
+        console.log('Daily tip:', getDailyTip());
+    </script>
+</body>
+
+</html>

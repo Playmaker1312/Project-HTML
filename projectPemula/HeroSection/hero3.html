@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Section - Full Height 100vh</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 6vw, 56px);
+            font-weight: 800;
+            color: white;
+            max-width: 700px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: clamp(16px, 2.5vw, 20px);
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 550px;
+            line-height: 1.7;
+            margin-bottom: 36px;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .hero-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 24px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(10px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero">
+        <h1>Bangun <span>Masa Depan Digital</span> Bersama Kami</h1>
+        <p>Kami membantu bisnis Anda tumbuh dengan solusi website modern, responsif, dan berkinerja tinggi.</p>
+        <a href="#" class="hero-cta">Mulai Sekarang</a>
+        <div class="hero-indicator">↓</div>
+    </section>
+    <section
+        style="min-height: 50vh; display: flex; justify-content: center; align-items: center; background: #f8f9fa; padding: 40px;">
+        <div style="text-align: center;">
+            <h2 style="color: #2d3436; margin-bottom: 12px;">Konten Setelah Hero</h2>
+            <p style="color: #636e72;">Hero section menggunakan min-height: 100vh, jadi konten ini muncul tepat setelah
+                hero.</p>
+        </div>
+    </section>
+</body>
+
+</html>

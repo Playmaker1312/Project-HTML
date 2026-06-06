@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Artikel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            background: #f8fafc;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin-bottom: 24px;
+        }
+
+        pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .output {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .output .article-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .output .article-item:last-child {
+            border-bottom: none;
+        }
+
+        .output .article-item strong {
+            color: #2563eb;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Data Artikel dalam JavaScript Object</h1>
+        <div class="output" id="output"></div>
+    </div>
+    <script>
+        const articles = [
+            {
+                id: 1,
+                title: 'Panduan Lengkap CSS Grid untuk Pemula',
+                category: 'CSS',
+                date: '2026-05-28',
+                excerpt: 'Pelajari cara menggunakan CSS Grid untuk membuat layout website modern dengan mudah.',
+                content: '<p>CSS Grid adalah sistem layout dua dimensi...</p>',
+                image: 'https://images.unsplash.com/photo-1523437113738-bbd3cc89fb19?w=600&h=400&fit=crop',
+                author: 'Admin',
+                tags: ['css', 'layout', 'pemula'],
+                readTime: 5
+            },
+            {
+                id: 2,
+                title: '10 Tips JavaScript untuk Developer Pemula',
+                category: 'JavaScript',
+                date: '2026-05-25',
+                excerpt: 'Kumpulan tips dan trik JavaScript yang akan membantu Anda menjadi developer yang lebih baik.',
+                content: '<p>JavaScript adalah bahasa yang sangat fleksibel...</p>',
+                image: 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=600&h=400&fit=crop',
+                author: 'Admin',
+                tags: ['javascript', 'tips', 'pemula'],
+                readTime: 7
+            },
+            {
+                id: 3,
+                title: 'Membuat Website Responsive dengan Flexbox',
+                category: 'CSS',
+                date: '2026-05-20',
+                excerpt: 'Tutorial lengkap menggunakan Flexbox untuk layout responsive tanpa ribet.',
+                content: '<p>Flexbox adalah salah satu fitur CSS modern...</p>',
+                image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&h=400&fit=crop',
+                author: 'Admin',
+                tags: ['css', 'flexbox', 'responsive'],
+                readTime: 6
+            },
+            {
+                id: 4,
+                title: 'Pengertian DOM Manipulation di JavaScript',
+                category: 'JavaScript',
+                date: '2026-05-18',
+                excerpt: 'Apa itu DOM dan bagaimana memanipulasinya dengan JavaScript untuk website interaktif.',
+                content: '<p>DOM Document Object Model adalah representasi...</p>',
+                image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop',
+                author: 'Admin',
+                tags: ['javascript', 'dom', 'interaktif'],
+                readTime: 8
+            }
+        ];
+        const output = document.getElementById('output');
+        output.innerHTML = '<h3>Data Artikel (' + articles.length + ' artikel)</h3>' +
+            articles.map(a => '<div class="article-item"><strong>#' + a.id + '</strong> ' + a.title + ' — <em>' + a.category + '</em> (' + a.readTime + ' menit baca)</div>').join('');
+        console.log('Data artikel siap digunakan:', articles);
+    </script>
+</body>
+
+</html>

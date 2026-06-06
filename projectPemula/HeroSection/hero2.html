@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Section - HTML Semantik</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 80px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 560px;
+        }
+
+        .hero-content h1 {
+            font-size: 52px;
+            font-weight: 800;
+            color: #2d3436;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 span {
+            color: #667eea;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            color: #636e72;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 16px 36px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.3s;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            width: 480px;
+            height: 480px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 64px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bangun <span>Masa Depan Digital</span> Bersama Kami</h1>
+            <p>Kami membantu bisnis Anda tumbuh dengan solusi website modern, responsif, dan berkinerja tinggi. Mulai
+                transformasi digital Anda sekarang.</p>
+            <a href="#" class="hero-cta">Mulai Sekarang</a>
+        </div>
+        <div class="hero-image">🚀</div>
+    </section>
+</body>
+
+</html>

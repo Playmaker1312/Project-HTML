@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Artikel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 24px;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 16px;
+            margin-bottom: 24px;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+            color: #64748b;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .article-meta .category {
+            background: #eff6ff;
+            color: #2563eb;
+            padding: 2px 12px;
+            border-radius: 12px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            line-height: 1.3;
+            margin-bottom: 16px;
+        }
+
+        .article-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 0;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+            margin-bottom: 24px;
+        }
+
+        .article-author img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+        }
+
+        .article-author .name {
+            font-weight: 600;
+        }
+
+        .article-author .role {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .article-content {
+            line-height: 1.8;
+            color: #334155;
+        }
+
+        .article-content p {
+            margin-bottom: 16px;
+        }
+
+        .article-content h2 {
+            font-size: 1.5rem;
+            margin: 32px 0 16px;
+        }
+
+        .not-found {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .not-found h2 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        @media (max-width: 640px) {
+            .article-image {
+                height: 250px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="app">
+        <a class="back-link" id="backLink">← Kembali ke Blog</a>
+        <div id="articleContent"></div>
+    </div>
+    <script>
+        const articles = [
+            { id: 1, title: 'Panduan Lengkap CSS Grid untuk Pemula', category: 'CSS', date: '28 Mei 2026', image: 'https://images.unsplash.com/photo-1523437113738-bbd3cc89fb19?w=800&h=400&fit=crop', author: 'Admin', content: '<p>CSS Grid adalah sistem layout dua dimensi yang memungkinkan Anda membuat tata letak halaman web yang kompleks dengan mudah.</p><h2>Apa itu CSS Grid?</h2><p>CSS Grid adalah modul CSS yang menyediakan sistem layout berbasis grid. Grid terdiri dari baris dan kolom yang memudahkan penempatan elemen.</p><p>Dengan CSS Grid, Anda bisa membuat layout yang sebelumnya sulit dicapai tanpa menggunakan framework atau JavaScript.</p>' }
+        ];
+        const params = new URLSearchParams(window.location.search);
+        const articleId = parseInt(params.get('id'));
+        const article = articles.find(a => a.id === articleId);
+        const container = document.getElementById('articleContent');
+        const backLink = document.getElementById('backLink');
+        backLink.addEventListener('click', () => { window.location.href = window.location.pathname; });
+        if (article) {
+            container.innerHTML = `
+        <div class="article-image" style="background-image:url('${article.image}')"></div>
+        <div class="article-meta"><span class="category">${article.category}</span><span>${article.date}</span></div>
+        <h1>${article.title}</h1>
+        <div class="article-author"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=48&h=48&fit=crop" alt="Author"><div><div class="name">${article.author}</div><div class="role">Penulis</div></div></div>
+        <div class="article-content">${article.content}</div>
+      `;
+        } else {
+            container.innerHTML = '<div class="not-found"><h2>Artikel Tidak Ditemukan</h2><p>Artikel dengan ID tersebut tidak tersedia.</p></div>';
+        }
+    </script>
+</body>
+
+</html>

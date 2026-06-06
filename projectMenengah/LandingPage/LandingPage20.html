@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            color: #0f172a;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            background: #2563eb;
+            color: white;
+            padding: 16px 0;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        nav .logo {
+            font-weight: 800;
+            font-size: 1.25rem;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav ul a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .hero {
+            padding: 60px 0;
+            background: #f0f9ff;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.75rem, 4vw, 3rem);
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+        }
+
+        .hero .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .hero .image {
+            background: #e2e8f0;
+            border-radius: 16px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+        }
+
+        .features {
+            padding: 60px 0;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            margin-bottom: 40px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            padding: 24px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .card h3 {
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 640px) {
+            nav ul {
+                width: 100%;
+            }
+
+            nav ul a {
+                padding: 8px 0;
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero .image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">BisnisKu</div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Fitur</a></li>
+                <li><a href="#">Harga</a></li>
+                <li><a href="#">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="hero">
+        <div class="container">
+            <div>
+                <h1>Solusi Digital untuk Bisnis Anda</h1>
+                <p>Platform all-in-one untuk mengembangkan bisnis Anda secara online dengan fitur lengkap dan mudah
+                    digunakan.</p><a href="#" class="btn">Mulai Sekarang</a>
+            </div>
+            <div class="image">Preview</div>
+        </div>
+    </section>
+    <section class="features">
+        <div class="container">
+            <h2>Fitur Unggulan</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Cepat</h3>
+                    <p>Loading super cepat di semua perangkat.</p>
+                </div>
+                <div class="card">
+                    <h3>Aman</h3>
+                    <p>Data terenkripsi dan aman.</p>
+                </div>
+                <div class="card">
+                    <h3>Responsive</h3>
+                    <p>Tampil sempurna di semua layar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        console.log('Landing page responsive siap di semua breakpoint. Gunakan DevTools untuk testing.');
+    </script>
+</body>
+
+</html>

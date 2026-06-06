@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form - Focus State</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 520px;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2d3436;
+            margin-bottom: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #2d3436;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+            background: #fafafa;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.12);
+            outline: none;
+        }
+
+        input:focus-visible,
+        textarea:focus-visible {
+            outline: 2px solid #667eea;
+            outline-offset: 2px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #5a6fd6;
+        }
+
+        .submit-btn:focus-visible {
+            outline: 2px solid #667eea;
+            outline-offset: 2px;
+        }
+
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        .demo-focus {
+            margin-top: 20px;
+            padding: 16px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #636e72;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Focus State Demo</h2>
+        <form novalidate>
+            <div class="form-group">
+                <label for="name">Nama</label>
+                <input type="text" id="name" placeholder="Klik atau tab ke sini">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Tab dari field sebelumnya">
+            </div>
+            <div class="form-group">
+                <label for="msg">Pesan</label>
+                <textarea id="msg" placeholder="Coba focus dengan mouse dan keyboard"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Kirim</button>
+        </form>
+        <div class="demo-focus">Coba navigasi menggunakan tombol Tab untuk melihat perbedaan focus dengan mouse vs
+            keyboard.</div>
+    </div>
+</body>
+
+</html>

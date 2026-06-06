@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form - Visual Feedback</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 520px;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2d3436;
+            margin-bottom: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #2d3436;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+
+        .input-wrap input,
+        .input-wrap textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.3s, background 0.3s;
+            background: #fafafa;
+        }
+
+        .input-wrap input:focus,
+        .input-wrap textarea:focus {
+            outline: none;
+        }
+
+        .input-wrap.valid input,
+        .input-wrap.valid textarea {
+            border-color: #27ae60;
+            background: #f0faf4;
+        }
+
+        .input-wrap.invalid input,
+        .input-wrap.invalid textarea {
+            border-color: #e74c3c;
+            background: #fff5f5;
+        }
+
+        .input-wrap .icon {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .input-wrap.valid .icon-check {
+            opacity: 1;
+            color: #27ae60;
+        }
+
+        .input-wrap.invalid .icon-x {
+            opacity: 1;
+            color: #e74c3c;
+        }
+
+        textarea~.icon {
+            top: 16px;
+            transform: none;
+        }
+
+        .error-message {
+            font-size: 12px;
+            color: #e74c3c;
+            margin-top: 4px;
+            min-height: 18px;
+            padding-left: 4px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Visual Feedback</h2>
+        <form id="feedbackForm" novalidate>
+            <div class="form-group">
+                <label for="name">Nama</label>
+                <div class="input-wrap" id="nameWrap">
+                    <input type="text" id="name" placeholder="Min 3 karakter">
+                    <span class="icon icon-check">✓</span>
+                    <span class="icon icon-x">✕</span>
+                </div>
+                <div class="error-message" id="nameError"></div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <div class="input-wrap" id="emailWrap">
+                    <input type="email" id="email" placeholder="contoh@email.com">
+                    <span class="icon icon-check">✓</span>
+                    <span class="icon icon-x">✕</span>
+                </div>
+                <div class="error-message" id="emailError"></div>
+            </div>
+            <div class="form-group">
+                <label for="message">Pesan</label>
+                <div class="input-wrap" id="messageWrap">
+                    <textarea id="message" placeholder="Min 10 karakter"></textarea>
+                    <span class="icon icon-check">✓</span>
+                    <span class="icon icon-x">✕</span>
+                </div>
+                <div class="error-message" id="messageError"></div>
+            </div>
+            <button type="submit" class="submit-btn" id="submitBtn">Kirim</button>
+        </form>
+    </div>
+    <script>
+        function validate(id) {
+            const el = document.getElementById(id);
+            const wrap = document.getElementById(id + 'Wrap');
+            const err = document.getElementById(id + 'Error');
+            const v = el.value.trim();
+            let msg = '';
+            if (!v) msg = 'Wajib diisi.';
+            else if (id === 'name' && v.length < 3) msg = 'Minimal 3 karakter.';
+            else if (id === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) msg = 'Format email salah.';
+            else if (id === 'message' && v.length < 10) msg = 'Minimal 10 karakter.';
+            err.textContent = msg;
+            wrap.className = 'input-wrap' + (msg ? ' invalid' : (v ? ' valid' : ''));
+            return !msg;
+        }
+        ['name', 'email', 'message'].forEach(f => {
+            document.getElementById(f).addEventListener('input', function () { validate(f); });
+        });
+        document.getElementById('feedbackForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (['name', 'email', 'message'].every(f => validate(f))) alert('Form valid!');
+        });
+    </script>
+</body>
+
+</html>

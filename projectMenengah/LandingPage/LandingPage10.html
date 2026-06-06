@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Table</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            background: #f8fafc;
+        }
+
+        .pricing {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            color: #64748b;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            align-items: start;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 32px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card.popular {
+            border-color: #2563eb;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
+            transform: scale(1.02);
+        }
+
+        .pricing-card.popular:hover {
+            transform: scale(1.02) translateY(-4px);
+        }
+
+        .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2563eb;
+            color: white;
+            padding: 4px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pricing-card .plan-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+
+        .pricing-card .price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #64748b;
+        }
+
+        .pricing-card .description {
+            color: #64748b;
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+        }
+
+        .pricing-card .features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .pricing-card .features li {
+            padding: 8px 0;
+            color: #475569;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pricing-card .features li::before {
+            content: '\2713';
+            color: #10b981;
+            font-weight: 700;
+        }
+
+        .pricing-card .features li.unchecked {
+            color: #94a3b8;
+        }
+
+        .pricing-card .features li.unchecked::before {
+            content: '\2717';
+            color: #94a3b8;
+        }
+
+        .btn-pricing {
+            display: block;
+            text-align: center;
+            padding: 14px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-pricing.primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-pricing.primary:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-pricing.outline {
+            border: 2px solid #2563eb;
+            color: #2563eb;
+        }
+
+        .btn-pricing.outline:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+        @media (max-width: 900px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .pricing-card.popular {
+                transform: none;
+            }
+
+            .pricing-card.popular:hover {
+                transform: translateY(-4px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="pricing">
+        <div class="section-header">
+            <h2>Pilihan Paket</h2>
+            <p>Pilih paket yang sesuai dengan kebutuhan bisnis Anda.</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="plan-name">Basic</div>
+                <div class="price">Rp99<span>/bln</span></div>
+                <div class="description">Cocok untuk pemula yang ingin memulai.</div>
+                <ul class="features">
+                    <li>1 Website</li>
+                    <li>10 GB Storage</li>
+                    <li>Support Email</li>
+                    <li class="unchecked">Prioritas Support</li>
+                    <li class="unchecked">Analitik Lanjutan</li>
+                </ul>
+                <a href="#" class="btn-pricing outline">Pilih Basic</a>
+            </div>
+            <div class="pricing-card popular">
+                <div class="badge">Terpopuler</div>
+                <div class="plan-name">Pro</div>
+                <div class="price">Rp249<span>/bln</span></div>
+                <div class="description">Cocok untuk bisnis yang berkembang.</div>
+                <ul class="features">
+                    <li>5 Website</li>
+                    <li>50 GB Storage</li>
+                    <li>Support Email & Chat</li>
+                    <li>Prioritas Support</li>
+                    <li class="unchecked">Analitik Lanjutan</li>
+                </ul>
+                <a href="#" class="btn-pricing primary">Pilih Pro</a>
+            </div>
+            <div class="pricing-card">
+                <div class="plan-name">Enterprise</div>
+                <div class="price">Rp599<span>/bln</span></div>
+                <div class="description">Cocok untuk perusahaan besar.</div>
+                <ul class="features">
+                    <li>Unlimited Website</li>
+                    <li>500 GB Storage</li>
+                    <li>Support 24/7</li>
+                    <li>Prioritas Support</li>
+                    <li>Analitik Lanjutan</li>
+                </ul>
+                <a href="#" class="btn-pricing outline">Pilih Enterprise</a>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

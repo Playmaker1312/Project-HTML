@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            background: #f8fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            color: #0f172a;
+        }
+
+        header .subtitle {
+            color: #64748b;
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-card .thumb {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .article-card .category-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #2563eb;
+        }
+
+        .article-card .body {
+            padding: 20px;
+        }
+
+        .article-card .date {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+
+        .article-card h3 {
+            font-size: 1.15rem;
+            color: #0f172a;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .article-card p {
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .article-card .read-more {
+            display: inline-block;
+            margin-top: 12px;
+            color: #2563eb;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .article-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1>Blog</h1>
+                <div class="subtitle">Artikel terbaru seputar web development</div>
+            </div>
+        </header>
+        <div class="article-grid" id="articleGrid"></div>
+    </div>
+    <script>
+        const articles = [
+            { id: 1, title: 'Panduan Lengkap CSS Grid untuk Pemula', category: 'CSS', date: '28 Mei 2026', excerpt: 'Pelajari cara menggunakan CSS Grid untuk membuat layout modern.', image: 'https://images.unsplash.com/photo-1523437113738-bbd3cc89fb19?w=600&h=400&fit=crop' },
+            { id: 2, title: '10 Tips JavaScript untuk Developer Pemula', category: 'JavaScript', date: '25 Mei 2026', excerpt: 'Kumpulan tips dan trik JavaScript yang akan membantu Anda.', image: 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=600&h=400&fit=crop' },
+            { id: 3, title: 'Membuat Website Responsive dengan Flexbox', category: 'CSS', date: '20 Mei 2026', excerpt: 'Tutorial lengkap menggunakan Flexbox untuk layout responsive.', image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&h=400&fit=crop' },
+            { id: 4, title: 'Pengertian DOM Manipulation di JavaScript', category: 'JavaScript', date: '18 Mei 2026', excerpt: 'Apa itu DOM dan bagaimana memanipulasinya dengan JavaScript.', image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop' },
+            { id: 5, title: 'Cara Efektif Belajar Web Development', category: 'Tips', date: '15 Mei 2026', excerpt: 'Strategi dan sumber daya untuk belajar web development secara efektif.', image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop' }
+        ];
+        const grid = document.getElementById('articleGrid');
+        grid.innerHTML = articles.map(a => `
+      <div class="article-card" onclick="location.href='?id=${a.id}'">
+        <div class="thumb" style="background-image:url('${a.image}')"><span class="category-badge">${a.category}</span></div>
+        <div class="body">
+          <div class="date">${a.date}</div>
+          <h3>${a.title}</h3>
+          <p>${a.excerpt}</p>
+          <span class="read-more">Baca selengkapnya →</span>
+        </div>
+      </div>
+    `).join('');
+    </script>
+</body>
+
+</html>

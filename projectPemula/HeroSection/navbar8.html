@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Section - Split Layout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            padding: 0 80px;
+            min-height: 100vh;
+            background: #f8f9fa;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 540px;
+        }
+
+        .hero-content .badge {
+            display: inline-block;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 800;
+            color: #2d3436;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 span {
+            color: #667eea;
+        }
+
+        .hero-content p {
+            font-size: clamp(15px, 2vw, 18px);
+            color: #636e72;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .hero-content .cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 14px 36px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+
+        .hero-content .cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 520px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                padding: 60px 24px;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero-image img {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge">🔥 Terbaru 2026</span>
+            <h1>Transformasi <span>Digital</span> untuk Bisnis Anda</h1>
+            <p>Kami menghadirkan solusi website modern yang responsif, cepat, dan mudah dikelola untuk mengembangkan
+                bisnis Anda.</p>
+            <a href="#" class="cta">Mulai Sekarang</a>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="Ilustrasi Digital">
+        </div>
+    </section>
+</body>
+
+</html>

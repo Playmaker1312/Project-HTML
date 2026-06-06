@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form - Final Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 540px;
+            background: white;
+            border-radius: 24px;
+            padding: 44px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 28px;
+            color: #2d3436;
+            margin-bottom: 4px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #636e72;
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #2d3436;
+        }
+
+        label .required {
+            color: #e74c3c;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: #fafafa;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        }
+
+        input.error {
+            border-color: #e74c3c;
+            background: #fff5f5;
+        }
+
+        input.valid {
+            border-color: #27ae60;
+        }
+
+        .error-message {
+            font-size: 12px;
+            color: #e74c3c;
+            margin-top: 4px;
+            min-height: 18px;
+        }
+
+        .char-counter {
+            text-align: right;
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 4px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .spinner {
+            display: none;
+            width: 18px;
+            height: 18px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+
+        .submit-btn.loading .spinner {
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            10%,
+            50%,
+            90% {
+                transform: translateX(-5px);
+            }
+
+            30%,
+            70% {
+                transform: translateX(5px);
+            }
+        }
+
+        .shake {
+            animation: shake 0.4s ease;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .success-message .icon {
+            font-size: 56px;
+            color: #27ae60;
+            margin-bottom: 12px;
+        }
+
+        .success-message h3 {
+            font-size: 22px;
+            color: #2d3436;
+            margin-bottom: 8px;
+        }
+
+        .success-message p {
+            color: #636e72;
+            margin-bottom: 20px;
+        }
+
+        .reset-btn {
+            padding: 12px 32px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .test-checklist {
+            margin-top: 16px;
+            padding: 16px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #636e72;
+        }
+
+        .test-checklist li {
+            margin-bottom: 4px;
+            list-style: none;
+        }
+
+        .test-checklist li::before {
+            content: '☐ ';
+        }
+
+        .test-checklist li.done::before {
+            content: '☑ ';
+            color: #27ae60;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container" id="formContainer">
+        <div id="formContent">
+            <h2>Hubungi Kami</h2>
+            <p class="subtitle">Final test — semua fitur terintegrasi</p>
+            <form id="finalForm" novalidate>
+                <div class="form-group">
+                    <label for="name">Nama <span class="required">*</span></label>
+                    <input type="text" id="name" placeholder="Nama lengkap" aria-required="true">
+                    <div class="error-message" id="nameError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email <span class="required">*</span></label>
+                    <input type="email" id="email" placeholder="contoh@email.com" aria-required="true">
+                    <div class="error-message" id="emailError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subjek <span class="required">*</span></label>
+                    <input type="text" id="subject" placeholder="Subjek" aria-required="true">
+                    <div class="error-message" id="subjectError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Pesan <span class="required">*</span></label>
+                    <textarea id="message" placeholder="Min 10 karakter" maxlength="500"
+                        aria-required="true"></textarea>
+                    <div class="char-counter"><span id="charCount">0 / 500</span></div>
+                    <div class="error-message" id="messageError"></div>
+                </div>
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span class="spinner"></span>
+                    <span class="btn-text">Kirim Pesan</span>
+                </button>
+            </form>
+            <div class="test-checklist" id="testChecklist">
+                <p><strong>Checklist Pengujian:</strong></p>
+                <li class="done">Validasi real-time (nama, email regex, subjek, pesan)</li>
+                <li class="done">Visual feedback (border merah/hijau + icon)</li>
+                <li class="done">Error message informatif di bawah field</li>
+                <li class="done">Karakter counter pada textarea</li>
+                <li class="done">Loading state pada tombol submit</li>
+                <li class="done">Animasi shake saat submit gagal</li>
+                <li class="done">Success message setelah submit berhasil</li>
+                <li class="done">localStorage draft (data tidak hilang saat refresh)</li>
+                <li class="done">ARIA accessibility attributes</li>
+                <li class="done">Responsive di semua ukuran layar</li>
+            </div>
+        </div>
+        <div class="success-message" id="successMessage">
+            <div class="icon">✓</div>
+            <h3>Pesan Terkirim!</h3>
+            <p>Terima kasih telah menghubungi kami. Tim kami akan merespon dalam 1x24 jam.</p>
+            <button class="reset-btn" id="resetBtn">Kirim Lagi</button>
+        </div>
+    </div>
+    <script>
+        const STORAGE_KEY = 'contactDraft';
+        const fields = ['name', 'email', 'subject', 'message'];
+        function validate(id) {
+            const el = document.getElementById(id);
+            const err = document.getElementById(id + 'Error');
+            const v = el.value.trim();
+            let msg = '';
+            if (!v) msg = 'Wajib diisi.';
+            else if (id === 'name' && v.length < 3) msg = 'Minimal 3 karakter.';
+            else if (id === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) msg = 'Format email tidak valid.';
+            else if (id === 'subject' && v.length < 3) msg = 'Minimal 3 karakter.';
+            else if (id === 'message' && v.length < 10) msg = 'Minimal 10 karakter.';
+            err.textContent = msg;
+            el.className = msg ? 'error' : (v ? 'valid' : '');
+            el.setAttribute('aria-invalid', msg ? 'true' : 'false');
+            return !msg;
+        }
+        function saveDraft() {
+            const data = {};
+            fields.forEach(f => data[f] = document.getElementById(f).value);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        }
+        function restoreDraft() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (!saved) return;
+            try { const data = JSON.parse(saved); fields.forEach(f => { if (data[f]) document.getElementById(f).value = data[f]; }); } catch (e) { }
+        }
+        function clearDraft() { localStorage.removeItem(STORAGE_KEY); }
+        fields.forEach(f => {
+            document.getElementById(f).addEventListener('input', function () { validate(f); saveDraft(); });
+        });
+        const messageEl = document.getElementById('message');
+        const charCount = document.getElementById('charCount');
+        messageEl.addEventListener('input', function () { charCount.textContent = `${this.value.length} / 500`; });
+        const form = document.getElementById('finalForm');
+        const btn = document.getElementById('submitBtn');
+        const btnText = btn.querySelector('.btn-text');
+        const formContent = document.getElementById('formContent');
+        const successMsg = document.getElementById('successMessage');
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const valid = fields.every(f => validate(f));
+            if (!valid) {
+                formContainer.classList.remove('shake');
+                void formContainer.offsetWidth;
+                formContainer.classList.add('shake');
+                setTimeout(() => formContainer.classList.remove('shake'), 400);
+                return;
+            }
+            btn.classList.add('loading');
+            btn.disabled = true;
+            btnText.textContent = 'Mengirim...';
+            setTimeout(function () {
+                btn.classList.remove('loading');
+                btn.disabled = false;
+                btnText.textContent = 'Kirim Pesan';
+                formContent.style.display = 'none';
+                successMsg.style.display = 'block';
+                clearDraft();
+            }, 1500);
+        });
+        document.getElementById('resetBtn').addEventListener('click', function () {
+            form.reset();
+            fields.forEach(f => { document.getElementById(f).className = ''; document.getElementById(f + 'Error').textContent = ''; });
+            charCount.textContent = '0 / 500';
+            successMsg.style.display = 'none';
+            formContent.style.display = 'block';
+        });
+        restoreDraft();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar - Perencanaan Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+        }
+
+        .nav-wireframe {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 32px;
+            background: #e0e0e0;
+            margin: 20px;
+        }
+
+        .logo-wire {
+            width: 80px;
+            height: 32px;
+            background: #ccc;
+            border-radius: 4px;
+        }
+
+        .menu-wire {
+            display: flex;
+            gap: 24px;
+        }
+
+        .menu-wire div {
+            width: 60px;
+            height: 16px;
+            background: #ccc;
+            border-radius: 2px;
+        }
+
+        .cta-wire {
+            width: 100px;
+            height: 36px;
+            background: #aaa;
+            border-radius: 18px;
+        }
+
+        .mobile-wire {
+            display: none;
+            width: 32px;
+            height: 24px;
+            background: #ccc;
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+
+            .menu-wire,
+            .cta-wire {
+                display: none;
+            }
+
+            .mobile-wire {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav-wireframe">
+        <div class="logo-wire"></div>
+        <div class="menu-wire">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="cta-wire"></div>
+        <div class="mobile-wire"></div>
+    </nav>
+    <p style="padding: 20px; text-align: center; color: #666;">Wireframe navigation bar — logo kiri, menu tengah, CTA
+        kanan</p>
+</body>
+
+</html>

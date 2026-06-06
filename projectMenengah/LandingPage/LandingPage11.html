@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Accordion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            background: #f8fafc;
+        }
+
+        .faq-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            color: #64748b;
+        }
+
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .accordion-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .accordion-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #0f172a;
+            text-align: left;
+            transition: background 0.2s;
+        }
+
+        .accordion-header:hover {
+            background: #f8fafc;
+        }
+
+        .accordion-header .icon {
+            font-size: 1.25rem;
+            color: #2563eb;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+
+        .accordion-item.active .accordion-header .icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-body {
+            max-height: 300px;
+        }
+
+        .accordion-body-inner {
+            padding: 0 24px 20px;
+            color: #475569;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 640px) {
+            .faq-section {
+                padding: 60px 20px;
+            }
+
+            .section-header h2 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="faq-section">
+        <div class="section-header">
+            <h2>Pertanyaan Umum</h2>
+            <p>Jawaban atas pertanyaan yang sering diajukan.</p>
+        </div>
+        <div class="accordion">
+            <div class="accordion-item active">
+                <button class="accordion-header">Bagaimana cara memulai? <span class="icon">+</span></button>
+                <div class="accordion-body">
+                    <div class="accordion-body-inner">Anda cukup mendaftar akun gratis, pilih paket yang sesuai, dan
+                        ikuti panduan setup. Tim kami siap membantu jika mengalami kesulitan.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">Apakah ada jaminan uang kembali? <span class="icon">+</span></button>
+                <div class="accordion-body">
+                    <div class="accordion-body-inner">Ya, kami memberikan garansi uang kembali 30 hari jika Anda tidak
+                        puas dengan layanan kami. Syarat dan ketentuan berlaku.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">Bisakah saya upgrade paket kapan saja? <span
+                        class="icon">+</span></button>
+                <div class="accordion-body">
+                    <div class="accordion-body-inner">Tentu. Anda bisa upgrade atau downgrade paket kapan saja.
+                        Perubahan harga akan disesuaikan secara proporsional.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">Metode pembayaran apa yang didukung? <span
+                        class="icon">+</span></button>
+                <div class="accordion-body">
+                    <div class="accordion-body-inner">Kami mendukung pembayaran melalui transfer bank, kartu kredit,
+                        GoPay, OVO, DANA, dan berbagai metode lainnya.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">Apakah data saya aman? <span class="icon">+</span></button>
+                <div class="accordion-body">
+                    <div class="accordion-body-inner">Keamanan data adalah prioritas kami. Kami menggunakan enkripsi SSL
+                        256-bit, server yang aman, dan backup harian.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.querySelectorAll('.accordion-header').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                item.classList.toggle('active');
+                document.querySelectorAll('.accordion-item').forEach(other => {
+                    if (other !== item) other.classList.remove('active');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

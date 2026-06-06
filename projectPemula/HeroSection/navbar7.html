@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Section - Fade In Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 24px;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            overflow: hidden;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero>* {
+            animation: fadeUp 0.8s ease backwards;
+        }
+
+        .hero-subtitle {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 16px;
+            animation-delay: 0.1s;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 6vw, 56px);
+            font-weight: 800;
+            color: white;
+            max-width: 700px;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            animation-delay: 0.3s;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: clamp(16px, 2.2vw, 20px);
+            color: rgba(255, 255, 255, 0.65);
+            max-width: 550px;
+            line-height: 1.7;
+            margin-bottom: 36px;
+            animation-delay: 0.5s;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation-delay: 0.7s;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero">
+        <p class="hero-subtitle">Selamat Datang</p>
+        <h1>Solusi <span>Digital Terbaik</span> untuk Bisnis Anda</h1>
+        <p>Kami membantu Anda membangun kehadiran digital yang kuat dengan teknologi terkini dan desain yang memukau.
+        </p>
+        <a href="#" class="hero-cta">Mulai Perjalanan</a>
+    </section>
+    <script>
+        window.addEventListener('load', function () {
+            document.querySelectorAll('.hero > *').forEach((el, i) => {
+                el.style.animationDelay = (0.1 + i * 0.2) + 's';
+            });
+        });
+    </script>
+</body>
+
+</html>

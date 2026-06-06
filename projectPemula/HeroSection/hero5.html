@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Section - Typography Hierarchy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 24px;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(13px, 1.8vw, 15px);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 7vw, 64px);
+            font-weight: 800;
+            color: white;
+            max-width: 800px;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-description {
+            font-size: clamp(16px, 2.2vw, 20px);
+            color: rgba(255, 255, 255, 0.65);
+            max-width: 580px;
+            line-height: 1.7;
+            margin-bottom: 36px;
+            font-weight: 300;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 60px;
+        }
+
+        .hero-stats div {
+            text-align: center;
+        }
+
+        .hero-stats .number {
+            font-size: 32px;
+            font-weight: 800;
+            color: white;
+        }
+
+        .hero-stats .label {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero">
+        <p class="hero-subtitle">Solusi Digital Terpercaya</p>
+        <h1>Bangun <span>Masa Depan Digital</span> Anda</h1>
+        <p class="hero-description">Kami menghadirkan solusi inovatif untuk membantu bisnis Anda tumbuh dan berkembang
+            di era digital yang kompetitif.</p>
+        <a href="#" class="hero-cta">Mulai Sekarang</a>
+        <div class="hero-stats">
+            <div>
+                <p class="number">500+</p>
+                <p class="label">Klien</p>
+            </div>
+            <div>
+                <p class="number">99%</p>
+                <p class="label">Kepuasan</p>
+            </div>
+            <div>
+                <p class="number">50+</p>
+                <p class="label">Penghargaan</p>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
