@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Optimization -->
+    <title>Alex Jhon | Professional Web Developer & Designer Portfolio</title>
+    <meta name="description"
+        content="Portfolio profesional seorang Web Developer & Designer. Berpengalaman membangun aplikasi web modern, responsif, dan interaktif dengan desain UI/UX premium.">
+    <meta name="keywords"
+        content="web developer, frontend developer, portfolio web, UI/UX designer, responsive design, javascript, react, html, css">
+    <meta name="author" content="Alex Jhon">
+
+    <!-- Open Graph (OG) Tags for Social Media Sharing -->
+    <meta property="og:title" content="Alex Jhon | Professional Web Developer & Designer">
+    <meta property="og:description"
+        content="Portofolio pengembang web dengan koleksi proyek desain web, mobile app, dan sistem dasbor analitik.">
+    <meta property="og:image" content="avatar.png">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav>
+        <a href="#home" class="logo">MyPortfolio</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle Menu">
+            <span class="hamburger"></span>
+        </button>
+        <ul id="navMenu">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Project</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <!-- navbar -->
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="about-hero">
+                <span class="badge">Selamat Datang di Portofolio Saya</span>
+                <h1>Hi, Saya <span>Zaki zafran</span>.</h1>
+                <h2>Professional Web Developer</h2>
+                <p>Saya membangun solusi web modern, berorientasi performa, dan responsif. Berpengalaman dalam
+                    mentransformasi ide kreatif menjadi kode yang interaktif dan ramah pengguna.</p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary">Lihat Project</a>
+                    <a href="#contact" class="btn btn-secondary">Hubungi Saya</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image-container">
+            <div class="hero-image-glow"></div>
+            <img src="avatar.png" alt="Alex Jhon Developer Avatar" class="hero-avatar">
+        </div>
+    </section>
+    <!-- Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Tentang Saya</h2>
+                <p class="subtitle">Mengenal lebih dekat siapa saya dan keahlian yang saya tawarkan</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3>Siapa Saya?</h3>
+                    <p>Saya adalah seorang Web Developer & UI/UX Designer yang berdedikasi untuk menciptakan produk
+                        digital yang tidak hanya berfungsi dengan baik, tetapi juga indah dan intuitif saat digunakan.
+                    </p>
+                    <p>Dengan fondasi kuat dalam pemrograman frontend dan prinsip desain yang berpusat pada pengguna,
+                        saya fokus dalam menghadirkan situs web yang cepat, aman, dan mudah diakses di semua jenis
+                        perangkat.</p>
+                </div>
+                <div class="about-skills">
+                    <h3>Keahlian Utama</h3>
+                    <div class="skills-grid">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3 / Flexbox</span>
+                        <span class="skill-tag">JavaScript (ES6+)</span>
+                        <span class="skill-tag">React.js & Next.js</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                        <span class="skill-tag">UI/UX Design</span>
+                        <span class="skill-tag">Git & GitHub</span>
+                        <span class="skill-tag">Responsive Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section -->
+
+    <!-- Project Section -->
+    <section id="projects" class="gallery">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Portofolio Kami</h2>
+                <p class="subtitle">Kumpulan project terbaik yang telah kami kerjakan</p>
+            </div>
+            <div class="grid">
+                <article class="card">
+                    <figure>
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80"
+                            alt="Project Web Company Profile">
+                    </figure>
+                    <div class="card-body">
+                        <span class="category">Web Design</span>
+                        <h3>Company Profile</h3>
+                        <p>Website company profile modern dengan desain responsif dan animasi menarik.</p>
+                        <a href="#" class="btn-card">Lihat Detail</a>
+                    </div>
+                </article>
+                <article class="card">
+                    <figure>
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&q=80"
+                            alt="Project Mobile E-commerce">
+                    </figure>
+                    <div class="card-body">
+                        <span class="category">Mobile App</span>
+                        <h3>Aplikasi E-commerce</h3>
+                        <p>Aplikasi mobile untuk belanja online dengan fitur lengkap dan UI yang intuitif.</p>
+                        <a href="#" class="btn-card">Lihat Detail</a>
+                    </div>
+                </article>
+                <article class="card">
+                    <figure>
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80"
+                            alt="Project Analytics Dashboard">
+                    </figure>
+                    <div class="card-body">
+                        <span class="category">Dashboard</span>
+                        <h3>Analytics Dashboard</h3>
+                        <p>Dashboard analitik data real-time dengan visualisasi interaktif dan laporan lengkap.</p>
+                        <a href="#" class="btn-card">Lihat Detail</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+    <!-- Project Section -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="form-container">
+            <h2>Hubungi Kami</h2>
+            <p class="subtitle">Kami akan merespon pesan Anda dalam 1x24 jam</p>
+            <form id="contactForm" novalidate>
+                <div class="form-group">
+                    <label for="name">Nama Lengkap <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap">
+                    <span class="error-msg" id="nameError">Nama lengkap wajib diisi</span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="contoh@email.com">
+                    <span class="error-msg" id="emailError">Format email tidak valid</span>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subjek <span class="required">*</span></label>
+                    <input type="text" id="subject" name="subject" placeholder="Subjek pesan">
+                    <span class="error-msg" id="subjectError">Subjek wajib diisi</span>
+                </div>
+                <div class="form-group">
+                    <label for="message">Pesan <span class="required">*</span></label>
+                    <textarea id="message" name="message" placeholder="Tulis pesan Anda..."></textarea>
+                    <span class="error-msg" id="messageError">Pesan wajib diisi</span>
+                </div>
+                <button type="submit" class="submit-btn">Kirim Pesan</button>
+            </form>
+        </div>
+    </section>
+    <!-- Contact Section -->
+
+    <!-- footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo">MyPortfolio</div>
+                <p class="company-desc">Menyediakan solusi digital profesional berkualitas tinggi, mengedepankan
+                    kreativitas dan teknologi terdepan.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Twitter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                            <rect width="4" height="12" x="2" y="9" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="YouTube">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17z" />
+                            <polygon points="10 15 15 12 10 9" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#projects">Portofolio</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Kontak</h3>
+                <ul class="contact-info">
+                    <li>Jl. Sudirman No. 123, Jakarta</li>
+                    <li>hello@alexjhon.dev</li>
+                    <li>+62 812 3456 7890</li>
+                    <li>Senin - Jumat, 09:00 - 18:00</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Kebijakan Privasi</a></li>
+                    <li><a href="#">Syarat & Ketentuan</a></li>
+                    <li><a href="#">Kebijakan Cookie</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <span>&copy; 2026 Alex Jhon. All rights reserved.</span>
+                <span>Made with ❤ in Indonesia</span>
+            </div>
+        </div>
+    </footer>
+    <!-- footer -->
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Script JS -->
+    <script src="script.js"></script>
+</body>
+
+</html>

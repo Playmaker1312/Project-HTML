@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Role Typing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #0f172a;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .greeting {
+            font-size: clamp(24px, 4vw, 40px);
+            color: #94a3b8;
+            margin-bottom: 10px;
+        }
+
+        .name {
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #7c3aed, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .role-wrapper {
+            font-size: clamp(20px, 3vw, 32px);
+            color: #64748b;
+        }
+
+        .role-text {
+            color: #f59e0b;
+            font-weight: 600;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: clamp(20px, 3vw, 32px);
+            background: #f59e0b;
+            margin-left: 4px;
+            animation: blink 0.7s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .status {
+            margin-top: 30px;
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .status-item {
+            text-align: center;
+        }
+
+        .status-item .num {
+            font-size: 28px;
+            font-weight: 700;
+            color: #a78bfa;
+        }
+
+        .status-item .lbl {
+            font-size: 13px;
+            color: #64748b;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="greeting">Halo, saya</div>
+        <div class="name">John Doe</div>
+        <div class="role-wrapper">
+            Saya seorang <span class="role-text" id="roleText"></span><span class="cursor"></span>
+        </div>
+        <div class="status">
+            <div class="status-item">
+                <div class="num">3+</div>
+                <div class="lbl">Tahun Pengalaman</div>
+            </div>
+            <div class="status-item">
+                <div class="num">20+</div>
+                <div class="lbl">Project Selesai</div>
+            </div>
+            <div class="status-item">
+                <div class="num">15+</div>
+                <div class="lbl">Klien Puas</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const roles = ['Full-Stack Developer', 'UI/UX Designer', 'Technical Writer', 'Open Source Contributor'];
+        const roleText = document.getElementById('roleText');
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        function type() {
+            const current = roles[roleIndex];
+            if (isDeleting) {
+                roleText.textContent = current.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                roleText.textContent = current.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            if (!isDeleting && charIndex === current.length) {
+                setTimeout(() => isDeleting = true, 1800);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+            }
+            setTimeout(type, isDeleting ? 40 : 80);
+        }
+        type();
+    </script>
+</body>
+
+</html>
